@@ -1,94 +1,77 @@
 <ion-header>
-  <ion-toolbar color="primary">
-    <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
-    </ion-buttons>
-    <ion-title>App Settings</ion-title>
-  </ion-toolbar>
-</ion-header>
+    <ion-toolbar color="primary">
+      <ion-buttons slot="start">
+        <ion-back-button color='light'></ion-back-button>
+      </ion-buttons>
+      <ion-title>  <ion-text color="light"><span style="font-size:22px"><strong> Inserisci scadenza </strong></span></ion-text> </ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content >
+      <ion-card color = "light">
+   
+    
+      <ion-grid fixed no-padding>
+        <ion-row>
+          <ion-col size="12" padding>
+  
+            <ion-list margin-bottom>
+            
+  
+              <ion-item>
+                <ion-label color="dark"  position="stacked"><span style="font-size:18px"><strong>Descrizione </strong></span></ion-label>
+                <ion-input inputmode="text" placeholder="Inserisci descrizione" value=""></ion-input>
+              </ion-item>
 
-<ion-content>
-  <ion-item class="bg-profile">
-    <ion-avatar slot="start">
-      <img src="assets/img/avatar.jpeg" class="user-avatar">
-    </ion-avatar>
-    <ion-label>
-      <ion-text color="light">
-        <h2>
-          <strong>João Firmino</strong>
-        </h2>
-      </ion-text>
-      <ion-text color="tertiary">
-        <h3>
-          firminoata@gmail.com
-        </h3>
-      </ion-text>
-      <ion-button icon-left size="small" shape="round" color="dark" (click)="editProfile()">
-        <ion-icon name="contact"></ion-icon>
-        Edit profile
-      </ion-button>
-      <ion-button icon-left size="small" shape="round" color="secondary" (click)="logout()">
-        <ion-icon name="log-out"></ion-icon>
-        logout
-      </ion-button>
-    </ion-label>
-  </ion-item>
+              <ion-item>
+                  <ion-label color="dark"><span style="font-size:18px"><strong>Categoria</strong></span></ion-label>
+                  <ion-select>
+                    <ion-select-option value="nes">Luce</ion-select-option>
+                    <ion-select-option value="n64">Gas</ion-select-option>
+                    <ion-select-option value="ps">Acqua</ion-select-option>
+                    <ion-select-option value="genesis">Assicurazione auto</ion-select-option>
+                    <ion-select-option value="saturn">Bollo auto</ion-select-option>
+                    <ion-select-option value="snes">Immondizia</ion-select-option>
+                    <ion-select-option value="snes">Condominio</ion-select-option>
+                  </ion-select>
+                </ion-item>
+      
+              <ion-item>
+                <ion-label color="dark" position="stacked"><span style="font-size:18px"><strong>Data di ricezione</strong></span></ion-label>
+                <ion-input inputmode="text" placeholder="aaaa-mm-gg" value=""></ion-input>
+              </ion-item>
+      
+              <ion-item>
+                <ion-label color="dark" position="stacked"><span style="font-size:18px"><strong>Data di scadenza</strong></span></ion-label>
+                <ion-input inputmode="text" placeholder="aaaa-mm-gg"></ion-input>
+              </ion-item>
 
-  <ion-list no-border>
-    <ion-list-header>
-      <ion-text color="dark">
-        <h5>General</h5>
-      </ion-text>
-    </ion-list-header>
-    <ion-item>
-      <ion-icon name="settings" slot="start" color="primary"></ion-icon>
-      <ion-label color="primary">App Language</ion-label>
-      <ion-select [(ngModel)]="lang">
-        <ion-select-option *ngFor="let language of languages" [value]="language">{{language}}</ion-select-option>
-      </ion-select>
-    </ion-item>
-    <ion-item>
-      <ion-icon name="notifications" slot="start" color="primary"></ion-icon>
-      <ion-label class="label" color="primary"> Enable notifications </ion-label>
-      <ion-toggle [(ngModel)]="enableNotifications"></ion-toggle>
-    </ion-item>
-  </ion-list>
-  <ion-list>
-    <ion-list-header>
-      <ion-text color="dark">
-        <h5>Currency</h5>
-      </ion-text>
-    </ion-list-header>
-    <ion-item>
-      <ion-icon name="card" slot="start" color="primary"></ion-icon>
-      <ion-label color="primary">Payment Method</ion-label>
-      <ion-select [(ngModel)]="paymentMethod">
-        <ion-select-option *ngFor="let method of paymentMethods" [value]="method">{{method}}</ion-select-option>
-      </ion-select>
-    </ion-item>
-    <ion-item>
-      <ion-icon name="logo-usd" slot="start" color="dark"></ion-icon>
-      <ion-label color="primary">Currency</ion-label>
-      <ion-select [(ngModel)]="currency">
-        <ion-select-option *ngFor="let currency of currencies" [value]="currency">{{currency}}</ion-select-option>
-      </ion-select>
-    </ion-item>
-  </ion-list>
-  <ion-list>
-    <ion-list-header>
-      <ion-text color="dark">
-        <h5>Other</h5>
-      </ion-text>
-    </ion-list-header>
-    <ion-item>
-      <ion-icon name="mail" slot="start" color="primary"></ion-icon>
-      <ion-label class="label" color="primary">Enable Promotions</ion-label>
-      <ion-toggle [(ngModel)]="enablePromo"></ion-toggle>
-    </ion-item>
-    <ion-item>
-      <ion-icon name="mail" slot="start" color="primary"></ion-icon>
-      <ion-label class="label" color="primary">Enable History</ion-label>
-      <ion-toggle [(ngModel)]="enableHistory"></ion-toggle>
-    </ion-item>
-  </ion-list>
-</ion-content>
+              <ion-item>
+                  <ion-label color="dark" position="stacked"><span style="font-size:18px"><strong>Periodo</strong></span></ion-label>
+                  <ion-input inputmode="numeric" placeholder="Numero mesi"></ion-input>
+                </ion-item>
+
+                <ion-item>
+                    <ion-label color="dark" position="stacked"><span style="font-size:18px"><strong>Importo</strong></span></ion-label>
+                    <ion-input inputmode="decimal" placeholder="Ex:...50.99"></ion-input>
+                  </ion-item>
+      
+            
+
+            </ion-list>
+    
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    
+      <div>
+          <ion-button icon-left size="medium" expand="full" shape="round" color="dark" (click)="sendData()" >
+            <ion-icon name="add-circle-outline"></ion-icon>
+            Inserisci
+          </ion-button>
+        </div>
+    </ion-card>
+    
+    
+  </ion-content>
+  

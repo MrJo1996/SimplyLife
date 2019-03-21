@@ -7,10 +7,14 @@
       <div class="logo"></div>
       <h4 no-margin>
         <ion-text color="light" class="fw700">
-          Ionic 4 Start Theme
+          Simply Life
         </ion-text>
       </h4>
     </div>
+
+    <br>
+    <br>
+    <br>
 
     <!-- Login form -->
     <form [formGroup]="onLoginForm" class="list-form">
@@ -23,7 +27,7 @@
       </ion-item>
       <p ion-text class="text08" *ngIf="onLoginForm.get('email').touched && onLoginForm.get('email').hasError('required')">
         <ion-text color="warning">
-          Required Field
+          Campo obbligatorio!
         </ion-text>
       </p>
 
@@ -36,56 +40,31 @@
       </ion-item>
       <p ion-text color="warning" class="text08" *ngIf="onLoginForm.get('password').touched && onLoginForm.get('password').hasError('required')">
         <ion-text color="warning">
-          Required Field
+          Campo obbligatorio!
         </ion-text>
         </p>
     </form>
 
     <p text-right tappable (click)="forgotPass()" class="paz">
       <ion-text color="light">
-        <strong>Forgot Pass?</strong>
+        <strong>Password dimenticata?</strong>
       </ion-text>
     </p>
+
 
     <div>
       <ion-button icon-left size="medium" expand="full" shape="round" color="dark" (click)="goToHome()" [disabled]="!onLoginForm.valid" tappable>
         <ion-icon name="log-in"></ion-icon>
-        Signin
+        Login
       </ion-button>
-
-      <p text-center>
-        <ion-text color="light">
-          Or Signin with:
-        </ion-text>
-      </p>
-
-      <ion-grid class="btn-group">
-        <ion-row>
-          <ion-col size="4">
-            <ion-button shape="round" expand="full" color="secondary">
-              <ion-icon slot="icon-only" name="logo-facebook"></ion-icon>
-            </ion-button>
-          </ion-col>
-          <ion-col size="4">
-            <ion-button shape="round" expand="full" color="secondary">
-              <ion-icon slot="icon-only" name="logo-twitter"></ion-icon>
-            </ion-button>
-          </ion-col>
-          <ion-col size="4">
-            <ion-button shape="round" expand="full" color="secondary">
-              <ion-icon slot="icon-only" name="logo-googleplus"></ion-icon>
-            </ion-button>
-          </ion-col>
-        </ion-row>
-      </ion-grid>
-
     </div>
 
-    <!-- Other links -->
+    <br>
+  
     <div text-center margin-top>
       <span (click)="goToRegister()" class="paz" tappable>
         <ion-text color="light">
-          New here? <strong>Sign Up</strong>
+          Non hai ancora un account? <strong>Registrati</strong>
         </ion-text>
       </span>
     </div>

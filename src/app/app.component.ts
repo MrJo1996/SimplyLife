@@ -29,18 +29,31 @@ export class AppComponent {
         icon: 'home'
       },
       {
-        title: 'About',
+        title: 'Visualizza scadenze',
         url: '/about',
         direct: 'forward',
-        icon: 'information-circle-outline'
+        icon: 'eye'
       },
 
       {
-        title: 'App Settings',
+        title: 'Inserisci scadenza',
         url: '/settings',
         direct: 'forward',
-        icon: 'cog'
+        icon: 'add-circle-outline'
+      },
+      {
+        title: 'Spese',
+        url: '/settings',
+        direct: 'forward',
+        icon: 'logo-usd'
+      },
+      {
+        title: 'Logout',
+        url: '/',
+        direct: 'root',
+        icon: 'return-left'
       }
+    
     ];
 
     this.initializeApp();

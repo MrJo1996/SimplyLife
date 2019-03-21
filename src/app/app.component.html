@@ -6,31 +6,14 @@
 
           <ion-item margin-bottom>
             <ion-avatar slot="start" class="user-avatar">
-              <img src="assets/img/avatar.jpeg">
+              <img src="assets/img/ionic4start-ico.png">
             </ion-avatar>
             <ion-label>
               <ion-text color="medium">
-                <h1><strong>João Firmino</strong></h1>
+                 
+                <h1><strong>Simply Life</strong></h1>
               </ion-text>
-              <ion-text color="secondary">
-                <h3>
-                  São Paulo, Brazil
-                </h3>
-              </ion-text>
-              <ion-menu-toggle class="mto" auto-hide="false">
-                <a class="text08" tappable (click)="goToEditProgile()">
-                  <ion-text color="medium">
-                    <ion-icon name="contact"></ion-icon>
-                    <strong>edit profile</strong>
-                  </ion-text>
-                </a> <ion-text color="secondary"> | </ion-text> 
-                <a class="text08" tappable (click)="logout()">
-                  <ion-text color="medium">
-                    <ion-icon name="log-out"></ion-icon>
-                    <strong>logout</strong>
-                  </ion-text>
-                </a>
-              </ion-menu-toggle>
+            
             </ion-label>
           </ion-item>
 
@@ -45,7 +28,7 @@
 
           <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages">
             <ion-item [routerLink]="[p.url]" color="primary">
-              <ion-icon slot="start" [name]="p.icon" color="light"></ion-icon>
+              <ion-icon slot="start" [name]="p.icon" color="tertiary"></ion-icon>
               <ion-label>
                 {{p.title}}
               </ion-label>

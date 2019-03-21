@@ -18,4 +18,8 @@ export class PopmenuComponent implements OnInit {
     return this.openMenu = !this.openMenu;
   }
 
+  modificapassword() {
+    this.navCtrl.navigateRoot('/modifica-password');
+  }
+
 }
