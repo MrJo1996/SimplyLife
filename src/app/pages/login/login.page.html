@@ -7,7 +7,7 @@
       <div class="logo"></div>
       <h4 no-margin>
         <ion-text color="light" class="fw700">
-          Simply Life
+           Simply Life  <!--  Result: {{nomeUtente}}  -->
         </ion-text>
       </h4>
     </div>
@@ -15,15 +15,20 @@
     <br>
     <br>
     <br>
+    
+    
+        <!-- Login form -->    
 
-    <!-- Login form -->
+    <!-- <ion-input type="tell" [(ngModel)]="test"></ion-input>
+    <ion-button (click)="loginForm()">Get Value</ion-button> -->
+
     <form [formGroup]="onLoginForm" class="list-form">
       <ion-item no-padding class="animated fadeInUp">
         <ion-label position="floating">
           <ion-icon name="mail" item-start></ion-icon>
           Email
         </ion-label>
-        <ion-input color="secondary" type="email" formControlName="email"></ion-input>
+        <ion-input color="secondary" type="tell" [(ngModel)]="email" formControlName="email"></ion-input>
       </ion-item>
       <p ion-text class="text08" *ngIf="onLoginForm.get('email').touched && onLoginForm.get('email').hasError('required')">
         <ion-text color="warning">
@@ -36,7 +41,7 @@
           <ion-icon name="lock" item-start></ion-icon>
           Password
         </ion-label>
-        <ion-input color="secondary" type="password" formControlName="password"></ion-input>
+        <ion-input color="secondary" type="tell" [(ngModel)]="password" formControlName="password"></ion-input>
       </ion-item>
       <p ion-text color="warning" class="text08" *ngIf="onLoginForm.get('password').touched && onLoginForm.get('password').hasError('required')">
         <ion-text color="warning">
@@ -53,7 +58,7 @@
 
 
     <div>
-      <ion-button icon-left size="medium" expand="full" shape="round" color="dark" (click)="goToHome()" [disabled]="!onLoginForm.valid" tappable>
+      <ion-button icon-left size="medium" expand="full" shape="round" color="dark" (click)="login()" [disabled]="!onLoginForm.valid" tappable>
         <ion-icon name="log-in"></ion-icon>
         Login
       </ion-button>

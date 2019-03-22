@@ -12,6 +12,8 @@ import { SearchFilterPage } from '../../pages/modal/search-filter/search-filter.
 import { ImagePage } from './../modal/image/image.page';
 // Call notifications test by Popover and Custom Component.
 import { NotificationsComponent } from './../../components/notifications/notifications.component';
+import { Sessione } from 'src/app/session/sessione';
+import { ApiService } from 'src/app/providers/api.service';
 
 @Component({
   selector: 'app-home-results',
@@ -23,15 +25,25 @@ export class HomeResultsPage {
   yourLocation = '123 Test Street';
   themeCover = 'assets/img/ionic4-Start-Theme-cover.jpg';
 
+nomeUtente: string;
+
+
+
   constructor(
     public navCtrl: NavController,
     public menuCtrl: MenuController,
     public popoverCtrl: PopoverController,
     public alertCtrl: AlertController,
     public modalCtrl: ModalController,
-    public toastCtrl: ToastController
+    public toastCtrl: ToastController,
+    public session: Sessione,
+    public apiService: ApiService
   ) {
 
+
+    this.getValue();
+  
+  
   }
 
   ionViewWillEnter() {
@@ -105,5 +117,22 @@ export class HomeResultsPage {
     });
     return await popover.present();
   }
+
+
+// // //
+
+//Funzione locale che richiama la f definita nel provider. funzione che viene attivata nel momento in cui si schiacci aun bottone
+   getValue(){
+  this.apiService.getNomeUtente(this.session.codiceUtente).then(
+    (result) => { //nel caso in cui va a buon fine la chiamata avvaloro la variabile locale (che stamperemo) con il risultato della chiamata
+      this.nomeUtente = result['nome'];
+      console.log("NOME UTENTE HOME: ",this.nomeUtente);
+      console.log("CODICE UTENTE PASSATO: ",this.session.codiceUtente);
+    },
+    (rej) => {//nel caso non vada a buon fine la chiamata
+      console.log("CODICE UTENTE PASSATO: ",this.session.codiceUtente);
+      this.nomeUtente = "no connection";
+    } 
+  );}
 
 }
