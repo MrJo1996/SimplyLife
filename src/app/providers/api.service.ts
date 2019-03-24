@@ -76,7 +76,7 @@ export class ApiService {
     });
   }
   
-  ModificaScadenza(codice_scadenza: Number, nome: String, data_ricezione: Date, data_scadenza: Date, periodo: Number, importo: Number){
+  modificaScadenza(codice_scadenza: Number, nome: String, data_ricezione: Date, data_scadenza: Date, periodo: Number, importo: Number){
     const body={
       codice_scadenza,
       nome,
@@ -137,7 +137,7 @@ export class ApiService {
     });
   }
 
-  InserisciScadenza(nome:String, data_ricezione:Date, data_scadenza:Date, periodo: Number, cod_categoria:Number, cod_utente:Number, importo:Number){
+  inserisciScadenza(nome:String, data_ricezione:Date, data_scadenza:Date, periodo: Number, cod_categoria:Number, cod_utente:Number, importo:Number){
     const body={
       nome,
       data_ricezione,
@@ -238,10 +238,29 @@ export class ApiService {
   })
 }
   
+recuperoPassword(email:string){
+  const body={
+        email
+      }
+      return new Promise((resolve, reject)=>{
+        this.http.post('http://localhost/simplylifebackend/public/recupero', body).subscribe(
+          (data)=>{
+            let recupero=data['data'];
+            console.log('rec: ', recupero);
+            resolve(recupero);
+          },
+          (err)=>{
+            reject();
+          }
+        )
+      })
+  }
+
+
   
-  /*
-    
-  ANCORA DA FARNE LE FUNZioni: 
+  
+  /*  
+  ANCORA DA FARNE LE FUNZ: 
 
   annullaPagamento(codice_scadenza:Number){
     const body={
@@ -268,5 +287,14 @@ export class ApiService {
         console.log('password modificata: ', data);
       }
     )
+
+
+    RECUPERA PASSWORD NON ESISTE
+recuperoPassword(email:string){
+const body={
+      email
+    }
+}
+
   } */
 }

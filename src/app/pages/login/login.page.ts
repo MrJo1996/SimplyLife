@@ -21,6 +21,8 @@ export class LoginPage implements OnInit {
 
   private codiceUtenteLoggato;
 
+public recuperoEmail: string;
+
   constructor(
     public navCtrl: NavController,
     public menuCtrl: MenuController,
@@ -50,28 +52,45 @@ export class LoginPage implements OnInit {
     });
   }
 
+
+
+  /////CONTINUARE A LAVORARE - RIUSCIRE A PRENDERE INPUT (VALUTARE SE CREARE UNA NUOVA PAGE) E FARE IN MODO CHE INVII DAVVERO LA MAIL
   async forgotPass() {
+   
     const alert = await this.alertCtrl.create({
       header: 'Password dimenticata?',
       message: 'Inserisci la tua email e riceverai un link per reimpostare la password.',
+      
       inputs: [
         {
-          name: 'email',
+          name: 'recuperoEmail',
           type: 'email',
           placeholder: 'Email'
         }
       ],
+
       buttons: [
         {
           text: 'Cancella',
           role: 'cancel',
           cssClass: 'secondary',
           handler: () => {
-            console.log('Confirm Cancel');
+            console.log('Operazione annullata');
           }
         }, {
           text: 'Conferma',
           handler: async () => {
+            console.log("faccio la funzione di recupero:");
+            console.log(this.recuperoEmail);
+            this.apiService.recuperoPassword(this.recuperoEmail).then(
+              (result) => { //nel caso in cui va a buon fine la chiamata
+                console.log("RECUPERATO");
+              },
+              (rej) => {//nel caso non vada a buon fine la chiamata
+                console.log("NON RECUP");
+              } 
+            );
+
             const loader = await this.loadingCtrl.create({
               duration: 2000
             });

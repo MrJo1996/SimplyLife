@@ -80,7 +80,7 @@ export class RegisterPage implements OnInit {
     this.navCtrl.navigateRoot('/');
   }
 
-  async presentAlert() {
+  async presentAlert() { //Funzione per mostrare a video finestrina che specifica "l'errore"
     const alert = await this.alertController.create({
       header: 'Password non corrispondenti',
       message: 'Assicurarsi che i campi "Password" e "Conferma Password" coincidino per continuare.',
