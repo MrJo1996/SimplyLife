@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient}from '@angular/common/http'
+import { resolve } from 'path';
+import { reject } from 'q';
 
 @Injectable({
   providedIn: 'root'
@@ -166,11 +168,12 @@ export class ApiService {
     return new Promise((resolve, reject)=>{
       this.http.post('http://localhost/simplylifebackend/public/visualizzascadenzeperdata', body).subscribe(
         (data)=>{
-          let scadenzeData=data['scadenze: '].data;
+          let scadenzeData=data['scadenze: '];
           console.log('scadenze per data: ', data);
           resolve(scadenzeData);
         },
         (err)=>{
+          console.log('ho fatto una reject da api');
           reject();
         }
       )
@@ -214,9 +217,31 @@ export class ApiService {
     })
   }
 
+  registrazione(nome:String, cognome:String,email:String, password:String){
+    const body={
+      email,
+      password,
+      nome,
+      cognome
+    }
+    return new Promise((resolve, reject)=>{
+    this.http.post('http://localhost/simplylifebackend/public/registrazione', body).subscribe(
+      (data)=>{
+        let signup=data['data'];
+        console.log('registrato: ', signup);
+        resolve(signup);
+      },
+      (err)=>{
+        reject();
+      }
+    )
+  })
+}
+  
+  
   /*
     
-  }
+  ANCORA DA FARNE LE FUNZioni: 
 
   annullaPagamento(codice_scadenza:Number){
     const body={
@@ -232,19 +257,6 @@ export class ApiService {
     
   }
 
-  registrazione(email:String, password:String, nome:String, cognome:String){
-    const body={
-      email,
-      password,
-      nome,
-      cognome
-    }
-    this.http.post('http://localhost/SimplyLifeBack-End/public/registrazione', body).subscribe(
-      data=>{
-        console.log('registrato: ', data);
-      }
-    )
-  }
 
   modificaPassword(email:String, password:String){
     const body={

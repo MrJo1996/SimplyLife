@@ -123,7 +123,7 @@ export class LoginPage implements OnInit {
     
     if((this.email==null) || (this.password==null)){
         console.log("COMPILA ETRAMBI I CAMPI")
-        return;}
+        return; }
 
     this.apiService.login(this.email,this.password).then(
       (result) => { //nel caso in cui va a buon fine la chiamata
@@ -153,6 +153,7 @@ export class LoginPage implements OnInit {
         console.log("NO ACCESS");
          this.check=0;
       } 
-    );}
+    );
+  }
 
 }

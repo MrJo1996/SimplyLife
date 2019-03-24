@@ -19,6 +19,7 @@
 </ion-header>
 
 <ion-content>
+  
   <ion-card no-margin class="no-radius">
    
   </ion-card>
@@ -29,10 +30,21 @@
       <!-- Modal 1: Modal Image -->Ciao, {{nomeUtente}}!
     </ion-button>
   </ion-card>
-
-  <ion-button margin shape="round" expand="full" color="secondary" (click)="searchFilter()">
-    Modal 2: Search Filter
-  </ion-button>
+ 
+  <ion-card class="bg-white">
+  Prossime scadenze:
+    <div *ngFor="let item of scadenze_data">
+        <ion-item >
+             Nome: {{item.nome}} 
+             Importo: {{item.importo}} 
+             Data Scadenza: {{item.data_scadenza}} 
+             Periodo: {{item.periodo}}
+             Data Ricezione: {{item.data_ricezione}}<div>&nbsp;&nbsp;&nbsp;</div>
+             <div *ngIf="item.confermato==0"> <ion-icon name="close-circle-outline"></ion-icon> </div>
+             <div *ngIf="item.confermato==1"> <ion-icon name="checkmark-circle-outline"></ion-icon> </div>
+        </ion-item>
+    </div>
+  </ion-card>
   
   <popmenu></popmenu>
 </ion-content>

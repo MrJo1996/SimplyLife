@@ -27,6 +27,7 @@ export class HomeResultsPage {
 
 nomeUtente: string;
 
+private scadenze_data=[]; //array che conterrà dati delle prossime X scadenze da stampare
 
 
   constructor(
@@ -40,9 +41,19 @@ nomeUtente: string;
     public apiService: ApiService
   ) {
 
-
-    this.getValue();
+    this.getValue(); //Stampa nome Utente loggato
   
+
+
+
+
+
+
+
+
+
+
+    this.getNextDeadLine(); //Stampa prossime x scadenze
   
   }
 
@@ -134,5 +145,18 @@ nomeUtente: string;
       this.nomeUtente = "no connection";
     } 
   );}
+
+getNextDeadLine(){
+  console.log('Sto nella funzione');
+  this.apiService.getScadenzePerData(this.session.codiceUtente).then(
+    (scadenzeData)=>{this. scadenze_data=scadenzeData
+      console.log('Ho avvalorato.');
+      console.log('in deadLine: ' ,this.session.codiceUtente);},
+    (rej)=>{this. scadenze_data=[]
+      console.log('REJECT');
+      console.log('in deadLine: ' ,this.session.codiceUtente);}
+  );
+}
+ 
 
 }
