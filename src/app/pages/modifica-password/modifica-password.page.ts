@@ -13,15 +13,15 @@ export class ModificaPasswordPage implements OnInit {
       public loadingCtrl: LoadingController,
       public toastCtrl: ToastController
       ) { }
-  
+
     ngOnInit() {
     }
-  
+
     async sendData() {
       const loader = await this.loadingCtrl.create({
         duration: 2000
       });
-  
+
       loader.present();
       loader.onWillDismiss().then(async l => {
         const toast = await this.toastCtrl.create({
@@ -31,12 +31,12 @@ export class ModificaPasswordPage implements OnInit {
           duration: 3000,
           position: 'bottom'
         });
-  
+
         toast.present();
         this.navCtrl.navigateForward('/home-results');
       });
     }
-  
+
   }
 
 

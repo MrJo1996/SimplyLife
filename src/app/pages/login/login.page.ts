@@ -13,7 +13,7 @@ export class LoginPage implements OnInit {
   public onLoginForm: FormGroup;
 
   public test;
-  private nomeUtente: string; //variabile che prenderà il nome utente
+  private nomeUtente: string; // variabile che prenderà il nome utente
 
   private email: string;
   private password: string;
@@ -32,9 +32,7 @@ public recuperoEmail: string;
     private formBuilder: FormBuilder,
     public apiService: ApiService,
     public session: Sessione
-  ) { 
-
-  }
+  ) { }
 
   ionViewWillEnter() {
     this.menuCtrl.enable(false);
@@ -54,13 +52,13 @@ public recuperoEmail: string;
 
 
 
-  /////CONTINUARE A LAVORARE - RIUSCIRE A PRENDERE INPUT (VALUTARE SE CREARE UNA NUOVA PAGE) E FARE IN MODO CHE INVII DAVVERO LA MAIL
+  ///// CONTINUARE A LAVORARE - RIUSCIRE A PRENDERE INPUT (VALUTARE SE CREARE UNA NUOVA PAGE) E FARE IN MODO CHE INVII DAVVERO LA MAIL
   async forgotPass() {
-   
+
     const alert = await this.alertCtrl.create({
       header: 'Password dimenticata?',
       message: 'Inserisci la tua email e riceverai un link per reimpostare la password.',
-      
+
       inputs: [
         {
           name: 'recuperoEmail',
@@ -80,15 +78,15 @@ public recuperoEmail: string;
         }, {
           text: 'Conferma',
           handler: async () => {
-            console.log("faccio la funzione di recupero:");
+            console.log('faccio la funzione di recupero:');
             console.log(this.recuperoEmail);
             this.apiService.recuperoPassword(this.recuperoEmail).then(
-              (result) => { //nel caso in cui va a buon fine la chiamata
-                console.log("RECUPERATO");
+              (result) => { // nel caso in cui va a buon fine la chiamata
+                console.log('RECUPERATO');
               },
-              (rej) => {//nel caso non vada a buon fine la chiamata
-                console.log("NON RECUP");
-              } 
+              (rej) => {// nel caso non vada a buon fine la chiamata
+                console.log('NON RECUP');
+              }
             );
 
             const loader = await this.loadingCtrl.create({
@@ -120,12 +118,12 @@ public recuperoEmail: string;
   }
 
   goToHome() {
-    if(this.check == 1){  //Settata a 1 in login() se data è diverso da null (fix del problema)
+    if (this.check === 1) {  // Settata a 1 in login() se data è diverso da null (fix del problema)
       this.navCtrl.navigateRoot('/home-results');
     }
   }
 
-  //Funzione locale che richiama la f definita nel provider. funzione che viene attivata nel momento in cui si schiacci aun bottone
+  // Funzione locale che richiama la f definita nel provider. funzione che viene attivata nel momento in cui si schiacci aun bottone
   /* getValue(){
   this.apiService.getNomeUtente(this.test).then(
     (result) => { //nel caso in cui va a buon fine la chiamata avvaloro la variabile locale (che stamperemo) con il risultato della chiamata
@@ -134,44 +132,44 @@ public recuperoEmail: string;
     },
     (rej) => {//nel caso non vada a buon fine la chiamata
       this.nomeUtente = "no connection";
-    } 
+    }
   );} */
 
 ///////////////////////////////////////////////
-  login(){
-    
-    if((this.email==null) || (this.password==null)){
-        console.log("COMPILA ETRAMBI I CAMPI")
+  login() {
+
+    if ((this.email == null) || (this.password == null)) {
+        console.log('COMPILA ETRAMBI I CAMPI');
         return; }
 
-    this.apiService.login(this.email,this.password).then(
-      (result) => { //nel caso in cui va a buon fine la chiamata
+    this.apiService.login(this.email, this.password).then(
+      (result) => { // nel caso in cui va a buon fine la chiamata
 
-        console.log("email inserita: " , this.email);
-        console.log("psw inserita: ", this.password);
-       
-        //controllo se le credenziali sono nel db:
-          if(result){
+        console.log('email inserita: ' , this.email);
+        console.log('psw inserita: ', this.password);
 
-             this.codiceUtenteLoggato=result[0].codice_utente;
-            console.log(this.codiceUtenteLoggato, "   CODICE "); 
-            
-            this.session.setValue(this.codiceUtenteLoggato); //Salvo codice utente e nome in una "classe apposita" 
-            
-            this.check=1; //ACCESSO CONSENTITO
-            console.log("Sono in data diverso da null, check = ", this.check);
-         
+        // controllo se le credenziali sono nel db:
+          if (result) {
+
+             this.codiceUtenteLoggato = result[0].codice_utente;
+            console.log(this.codiceUtenteLoggato, '   CODICE ');
+
+            this.session.setValue(this.codiceUtenteLoggato); // Salvo codice utente e nome in una "classe apposita"
+
+            this.check = 1; // ACCESSO CONSENTITO
+            console.log('Sono in data diverso da null, check = ', this.check);
+
           } else {
-            this.check=0; //ACCESSO NEGATO
-            console.log("Sono in data uguale a null, check = ", this.check);
+            this.check = 0; // ACCESSO NEGATO
+            console.log('Sono in data uguale a null, check = ', this.check);
           }
 
-        this.goToHome(); //portalo alla home se esistono le credenziali, se check quindi è uguale a 1
+        this.goToHome(); // portalo alla home se esistono le credenziali, se check quindi è uguale a 1
       },
-      (rej) => {//nel caso non vada a buon fine la chiamata
-        console.log("NO ACCESS");
-         this.check=0;
-      } 
+      (rej) => {// nel caso non vada a buon fine la chiamata
+        console.log('NO ACCESS');
+         this.check = 0;
+      }
     );
   }
 
