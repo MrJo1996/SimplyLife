@@ -4,9 +4,9 @@
       <ion-menu-button color="secondary"></ion-menu-button>
     </ion-buttons>
     <ion-title>
-        <ion-text color="light">
-          <ion-text color="light" class="fw700">Home</ion-text>
-        </ion-text>
+      <ion-text color="light">
+        <ion-text color="light" class="fw700">Home</ion-text>
+      </ion-text>
     </ion-title>
     <ion-buttons slot="end">
       <ion-button size="small" shape="round" color="medium" (click)="notifications()">
@@ -15,13 +15,13 @@
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
-  
+
 </ion-header>
 
 <ion-content>
-  
+
   <ion-card no-margin class="no-radius">
-   
+
   </ion-card>
 
   <ion-card class="bg-white">
@@ -30,22 +30,37 @@
       <!-- Modal 1: Modal Image -->Ciao, {{nomeUtente}}!
     </ion-button>
   </ion-card>
- 
-  <ion-card class="bg-white">
-  Prossime scadenze:
-    <div *ngFor="let item of scadenze_data">
-        <ion-item >
-             Nome: {{item.nome}} 
-             Importo: {{item.importo}} 
-             Data Scadenza: {{item.data_scadenza}} 
-             Periodo: {{item.periodo}}
-             Data Ricezione: {{item.data_ricezione}}<div>&nbsp;&nbsp;&nbsp;</div>
-             <div *ngIf="item.confermato==0"> <ion-icon name="close-circle-outline"></ion-icon> </div>
-             <div *ngIf="item.confermato==1"> <ion-icon name="checkmark-circle-outline"></ion-icon> </div>
+
+
+  <div *ngIf="scadenze_data != null">
+    <ion-card class="bg-white">
+      <h6>Prossime scadenze:</h6>
+      <div *ngFor="let item of scadenze_data['data']">
+        <ion-item>
+          Nome: {{item.nome}}<br>
+          Importo: {{item.importo}}<br>
+          Data Scadenza: {{item.data_scadenza}} <br>
+          Data Ricezione: {{item.data_ricezione}}<br>
+          Periodo: {{item.periodo}}<br>
+          <div *ngIf="item.confermato==0">
+            <br> Pagamento:
+            <ion-icon name="close-circle-outline"></ion-icon>
+          </div>
+          <div *ngIf="item.confermato==1">
+            <br> Pagamento:
+            <ion-icon name="checkmark-circle-outline"></ion-icon>
+          </div>
         </ion-item>
-    </div>
-  </ion-card>
-  
+      </div>
+    </ion-card>
+  </div>
+
+
+  <div *ngIf="scadenze_data == null">
+    <ion-card class="bg-white">
+      <h5> Nessuna scadenza presente.</h5>
+    </ion-card>
+  </div>
+
   <popmenu></popmenu>
 </ion-content>
-  

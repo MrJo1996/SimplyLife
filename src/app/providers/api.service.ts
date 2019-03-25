@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient}from '@angular/common/http'
+import {HttpClient}from '@angular/common/http';
 import { resolve } from 'path';
 import { reject } from 'q';
 
@@ -169,7 +169,7 @@ export class ApiService {
       this.http.post('http://localhost/simplylifebackend/public/visualizzascadenzeperdata', body).subscribe(
         (data)=>{
           let scadenzeData=data['scadenze: '];
-          console.log('scadenze per data: ', data);
+          console.log('scadenze per data: ', scadenzeData);
           resolve(scadenzeData);
         },
         (err)=>{

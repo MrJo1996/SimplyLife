@@ -5,7 +5,8 @@ import {
   MenuController,
   ToastController,
   PopoverController,
-  ModalController } from '@ionic/angular';
+  ModalController
+} from '@ionic/angular';
 
 // Modals
 import { SearchFilterPage } from '../../pages/modal/search-filter/search-filter.page';
@@ -25,9 +26,9 @@ export class HomeResultsPage {
   yourLocation = '123 Test Street';
   themeCover = 'assets/img/ionic4-Start-Theme-cover.jpg';
 
-nomeUtente: string;
+  nomeUtente: string;
 
-private scadenze_data=[]; //array che conterrà dati delle prossime X scadenze da stampare
+  private scadenze_data = []; //array che conterrà dati delle prossime X scadenze da stampare
 
 
   constructor(
@@ -42,19 +43,8 @@ private scadenze_data=[]; //array che conterrà dati delle prossime X scadenze d
   ) {
 
     this.getValue(); //Stampa nome Utente loggato
-  
-
-
-
-
-
-
-
-
-
 
     this.getNextDeadLine(); //Stampa prossime x scadenze
-  
   }
 
   ionViewWillEnter() {
@@ -104,7 +94,7 @@ private scadenze_data=[]; //array che conterrà dati delle prossime X scadenze d
     changeLocation.present();
   }
 
-  async searchFilter () {
+  async searchFilter() {
     const modal = await this.modalCtrl.create({
       component: SearchFilterPage
     });
@@ -130,33 +120,42 @@ private scadenze_data=[]; //array che conterrà dati delle prossime X scadenze d
   }
 
 
-// // //
+  // // //
 
-//Funzione locale che richiama la f definita nel provider. funzione che viene attivata nel momento in cui si schiacci aun bottone
-   getValue(){
-  this.apiService.getNomeUtente(this.session.codiceUtente).then(
-    (result) => { //nel caso in cui va a buon fine la chiamata avvaloro la variabile locale (che stamperemo) con il risultato della chiamata
-      this.nomeUtente = result['nome'];
-      console.log("NOME UTENTE HOME: ",this.nomeUtente);
-      console.log("CODICE UTENTE PASSATO: ",this.session.codiceUtente);
-    },
-    (rej) => {//nel caso non vada a buon fine la chiamata
-      console.log("CODICE UTENTE PASSATO: ",this.session.codiceUtente);
-      this.nomeUtente = "no connection";
-    } 
-  );}
+  //Funzione locale che richiama la f definita nel provider. funzione che viene attivata nel momento in cui si schiacci aun bottone
+  getValue() {
+    this.apiService.getNomeUtente(this.session.codiceUtente).then(
+      (result) => { //nel caso in cui va a buon fine la chiamata avvaloro la variabile locale (che stamperemo) con il risultato della chiamata
+        this.nomeUtente = result['nome'];
+        console.log("NOME UTENTE HOME: ", this.nomeUtente);
+        console.log("CODICE UTENTE PASSATO: ", this.session.codiceUtente);
+      },
+      (rej) => {//nel caso non vada a buon fine la chiamata
+        console.log("CODICE UTENTE PASSATO: ", this.session.codiceUtente);
+        this.nomeUtente = "no connection";
+      }
+    );
+  }
 
-getNextDeadLine(){
-  console.log('Sto nella funzione');
-  this.apiService.getScadenzePerData(this.session.codiceUtente).then(
-    (scadenzeData)=>{this. scadenze_data=scadenzeData
-      console.log('Ho avvalorato.');
-      console.log('in deadLine: ' ,this.session.codiceUtente);},
-    (rej)=>{this. scadenze_data=[]
-      console.log('REJECT');
-      console.log('in deadLine: ' ,this.session.codiceUtente);}
-  );
-}
- 
+  getNextDeadLine() {
+    this.apiService.getScadenzePerData(this.session.codiceUtente).then(
+      (scadenzeData) => {
+        this.scadenze_data = scadenzeData
+/* 
+        if (this.scadenze_data == undefined) {
+          console.log('OMBO');
+        } */
+
+        console.log('Ho avvalorato.');
+        console.log('in deadLine: ', this.session.codiceUtente);
+      },
+      (rej) => {
+        this.scadenze_data = []
+        console.log('REJECT');
+        console.log('in deadLine: ', this.session.codiceUtente);
+      }
+    );
+  }
+
 
 }
