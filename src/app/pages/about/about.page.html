@@ -1,19 +1,24 @@
 <ion-header>
-  <ion-toolbar color="primary">
-    <ion-buttons slot="start">
-      <ion-back-button color ="light"></ion-back-button>
-    </ion-buttons>
-    <ion-title>  <ion-text color="light"><span style="font-size:22px"><strong> Visualizza scadenza </strong></span></ion-text> </ion-title>
-  </ion-toolbar>
-</ion-header>
+    <ion-toolbar color="primary">
+      <ion-buttons slot="start">
+        <ion-back-button color='light'></ion-back-button>
+      </ion-buttons>
+      <ion-title>  <ion-text color="light"><span style="font-size:22px"><strong> Visualizza scadenze </strong></span></ion-text> </ion-title>
+    </ion-toolbar>
+  </ion-header>
 
 <ion-content>
-
     <div>
-        <ion-button icon-left size="medium" expand="full" shape="round" color="dark" (click)="goToModificaScadenza()" >
-          <ion-icon name="create"></ion-icon>
-          Modifica scadenza
-        </ion-button>
-      </div>
+      <ion-button icon-left size="medium" expand="full" shape="round" color="dark" (click)="goToVisualizzaCategorie()" >
+        <ion-icon name="eye"></ion-icon>
+        Visualizza scadenze per categoria
+      </ion-button>
+
+      <ion-button icon-left size="medium" expand="full" shape="round" color="dark" (click)="visualizzaScadenzePerData()" >
+        <ion-icon name="eye"></ion-icon>
+        Visualizza scadenze per data
+      </ion-button>
+      
+    </div>
 
 </ion-content>

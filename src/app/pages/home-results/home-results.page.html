@@ -15,7 +15,7 @@
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
-
+  
 </ion-header>
 
 <ion-content>
@@ -36,18 +36,20 @@
     <ion-card class="bg-white">
       <h6>Prossime scadenze:</h6>
       <div *ngFor="let item of scadenze_data['data']">
-        <ion-item>
+        <ion-item expanded="full">
+          <br>
           Nome: {{item.nome}}<br>
           Importo: {{item.importo}}<br>
           Data Scadenza: {{item.data_scadenza}} <br>
           Data Ricezione: {{item.data_ricezione}}<br>
           Periodo: {{item.periodo}}<br>
+          <br>
           <div *ngIf="item.confermato==0">
-            <br> Pagamento:
+            <br> Pagamento: <br>
             <ion-icon name="close-circle-outline"></ion-icon>
           </div>
           <div *ngIf="item.confermato==1">
-            <br> Pagamento:
+            <br> Pagamento: <br>
             <ion-icon name="checkmark-circle-outline"></ion-icon>
           </div>
         </ion-item>

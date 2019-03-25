@@ -7,9 +7,9 @@ const routes: Routes = [
   { path: 'about', loadChildren: './pages/about/about.module#AboutPageModule' },
   { path: 'settings', loadChildren: './pages/settings/settings.module#SettingsPageModule' },
   { path: 'edit-profile', loadChildren: './pages/edit-profile/edit-profile.module#EditProfilePageModule' },
-  { path: 'home-results', loadChildren: './pages/home-results/home-results.module#HomeResultsPageModule' },  { path: 'modifica-scadenza', loadChildren: './pages/modifica-scadenza/modifica-scadenza.module#ModificaScadenzaPageModule' },
-  { path: 'modifica-password', loadChildren: './pages/modifica-password/modifica-password.module#ModificaPasswordPageModule' },
-
+  { path: 'home-results', loadChildren: './pages/home-results/home-results.module#HomeResultsPageModule' },
+  { path: 'modifica-scadenza', loadChildren: './pages/modifica-scadenza/modifica-scadenza.module#ModificaScadenzaPageModule' },
+  { path: 'modifica-password', loadChildren: './pages/modifica-password/modifica-password.module#ModificaPasswordPageModule' }
 ];
 
 @NgModule({

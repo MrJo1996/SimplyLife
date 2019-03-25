@@ -12,7 +12,7 @@ export class ApiService {
   getNomeUtente(codice_utente: Number) {
     return new  Promise ((resolve, reject) => {
       const body = {codice_utente};
-      this.http.post('http://localhost/simplylifebackend/public/visualizzanomeutente', body).subscribe(
+      this.http.post('http://localhost/simplylifeBack-End/public/visualizzanomeutente', body).subscribe(
         (data) => {
           let utente = data['Utente'].data[0];
           console.log('utente: ', utente.nome);
@@ -27,7 +27,7 @@ export class ApiService {
 
   getCategorie() {
     return new  Promise ((resolve, reject) => {
-      this.http.get('http://localhost/simplylifebackend/public/visualizzacategoria').subscribe(
+      this.http.get('http://localhost/simplylifeBack-End/public/visualizzacategoria').subscribe(
         (data) => {
           let categorie = data['Categorie'].data;
           console.log('categorie: ', categorie);
@@ -44,7 +44,7 @@ export class ApiService {
   getImporto(codice_scadenza: Number) {
     const body = {codice_scadenza};
     return new  Promise ((resolve, reject) => {
-      this.http.post('http://localhost/simplylifebackend/public/visualizzaimporto', body).subscribe(
+      this.http.post('http://localhost/simplylifeBack-End/public/visualizzaimporto', body).subscribe(
         (data) => {
           let importo = data['Importo'].data[0];
           console.log('importo: ', importo.importo);
@@ -61,7 +61,7 @@ export class ApiService {
   getPeriodo(codice_scadenza: Number) {
     const body = {codice_scadenza};
     return new  Promise ((resolve, reject) => {
-      this.http.post('http://localhost/simplylifebackend/public/visualizzaperiodo', body).subscribe(
+      this.http.post('http://localhost/simplylifeBack-End/public/visualizzaperiodo', body).subscribe(
         (data) => {
           let periodo = data['Periodo'].data[0];
           console.log('periodo: ', periodo.periodo);
@@ -86,7 +86,7 @@ export class ApiService {
     };
 
     return new Promise((resolve, reject) => {
-      this.http.post('http://localhost/simplylifebackend/public/modificascadenza', body).subscribe(
+      this.http.post('http://localhost/simplylifeBack-End/public/modificascadenza', body).subscribe(
         (data) => {
           let modifica = data;
           console.log('modifica: ', data['message']);
@@ -105,7 +105,7 @@ export class ApiService {
     };
 
     return new Promise((resolve, reject) => {
-      this.http.post('http://localhost/simplylifebackend/public/visualizzascadenzepercategoria', body).subscribe(
+      this.http.post('http://localhost/simplylifeBack-End/public/visualizzascadenzepercategoria', body).subscribe(
         (data) => {
           let scadenze = data['scadenze'].data;
           console.log('scadenze: ', scadenze);
@@ -123,7 +123,7 @@ export class ApiService {
       codice_scadenza
     };
     return new Promise((resolve, reject) => {
-      this.http.post('http://localhost/simplylifebackend/public/visualizzapagamento', body).subscribe(
+      this.http.post('http://localhost/simplylifeBack-End/public/visualizzapagamento', body).subscribe(
         (data) => {
           let pagamento = data['confermato'].data[0];
           console.log('pagamento: ', pagamento);
@@ -148,7 +148,7 @@ export class ApiService {
       importo
     };
     return new Promise((resolve, reject) => {
-      this.http.post('http://localhost/simplylifebackend/public/inserisciscadenza', body).subscribe(
+      this.http.post('http://localhost/simplylifeBack-End/public/inserisciscadenza', body).subscribe(
         (data) => {
           let inserimento = data;
           console.log('inserimento: ', data['message']);
@@ -166,7 +166,7 @@ export class ApiService {
       cod_utente
     };
     return new Promise((resolve, reject) => {
-      this.http.post('http://localhost/simplylifebackend/public/visualizzascadenzeperdata', body).subscribe(
+      this.http.post('http://localhost/simplylifeBack-End/public/visualizzascadenzeperdata', body).subscribe(
         (data) => {
           let scadenzeData = data['scadenze: '];
           console.log('scadenze per data: ', data);
@@ -185,7 +185,7 @@ export class ApiService {
       codice_scadenza
     };
     return new Promise((resolve, reject) => {
-      this.http.post('http://localhost/simplylifebackend/public/confermapagamento', body).subscribe(
+      this.http.post('http://localhost/simplylifeBack-End/public/confermapagamento', body).subscribe(
         (data) => {
           let conferma = data;
           console.log('conferma: ', data['message']);
@@ -204,7 +204,7 @@ export class ApiService {
       password
     };
     return new Promise((resolve, reject) => {
-      this.http.post('http://localhost/simplylifebackend/public/login', body).subscribe(
+      this.http.post('http://localhost/simplylifeBack-End/public/login', body).subscribe(
         (data) => {
           let login = data['data'];
           console.log('login: ', login);
@@ -225,7 +225,7 @@ export class ApiService {
       cognome
     };
     return new Promise((resolve, reject) => {
-    this.http.post('http://localhost/simplylifebackend/public/registrazione', body).subscribe(
+    this.http.post('http://localhost/simplylifeBack-End/public/registrazione', body).subscribe(
       (data) => {
         let signup = data['data'];
         console.log('registrato: ', signup);
@@ -243,7 +243,7 @@ recuperoPassword(email: string) {
         email
       };
       return new Promise((resolve, reject) => {
-        this.http.post('http://localhost/simplylifebackend/public/recupero', body).subscribe(
+        this.http.post('http://localhost/simplylifeBack-End/public/recupero', body).subscribe(
           (data) => {
             let recupero = data['data'];
             console.log('rec: ', recupero);
@@ -261,7 +261,7 @@ recuperoPassword(email: string) {
       codice_scadenza
     };
     return new Promise((resolve, reject) => {
-      this.http.post('http://localhost/simplylifebackend/public/annullapagamento', body).subscribe(
+      this.http.post('http://localhost/simplylifeBack-End/public/annullapagamento', body).subscribe(
         (data) => {
           let annullato = data['message'];
           console.log('annullato: ', annullato);
