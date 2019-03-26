@@ -20,40 +20,36 @@
   
               <ion-item>
                 <ion-label color="dark"  position="stacked"><span style="font-size:18px"><strong>Descrizione </strong></span></ion-label>
-                <ion-input inputmode="text" placeholder="Inserisci descrizione" value=""></ion-input>
+                <ion-input inputmode="text" [(ngModel)]="nome" placeholder="Inserisci descrizione" value=""></ion-input>
               </ion-item>
 
               <ion-item>
                   <ion-label color="dark"><span style="font-size:18px"><strong>Categoria</strong></span></ion-label>
-                  <ion-select>
-                    <ion-select-option value="nes">Luce</ion-select-option>
-                    <ion-select-option value="n64">Gas</ion-select-option>
-                    <ion-select-option value="ps">Acqua</ion-select-option>
-                    <ion-select-option value="genesis">Assicurazione auto</ion-select-option>
-                    <ion-select-option value="saturn">Bollo auto</ion-select-option>
-                    <ion-select-option value="snes">Immondizia</ion-select-option>
-                    <ion-select-option value="snes">Condominio</ion-select-option>
+                  <ion-select [(ngModel)]="categoria"> 
+                    <div *ngFor="let item of categorie">
+                    <ion-select-option value="{{item.codice_categoria}}" >{{item.nome_categoria}}</ion-select-option>
+                    </div>
                   </ion-select>
-                </ion-item>
+              </ion-item>
       
               <ion-item>
                 <ion-label color="dark" position="stacked"><span style="font-size:18px"><strong>Data di ricezione</strong></span></ion-label>
-                <ion-input inputmode="text" placeholder="aaaa-mm-gg" value=""></ion-input>
+                <ion-input inputmode="text" [(ngModel)]="data_ricezione" placeholder="aaaa-mm-gg" value=""></ion-input>
               </ion-item>
       
               <ion-item>
                 <ion-label color="dark" position="stacked"><span style="font-size:18px"><strong>Data di scadenza</strong></span></ion-label>
-                <ion-input inputmode="text" placeholder="aaaa-mm-gg"></ion-input>
+                <ion-input inputmode="text" [(ngModel)]="data_scadenza" placeholder="aaaa-mm-gg"></ion-input>
               </ion-item>
 
               <ion-item>
                   <ion-label color="dark" position="stacked"><span style="font-size:18px"><strong>Periodo</strong></span></ion-label>
-                  <ion-input inputmode="numeric" placeholder="Numero mesi"></ion-input>
+                  <ion-input inputmode="numeric" [(ngModel)]="periodo" placeholder="Numero mesi"></ion-input>
                 </ion-item>
 
                 <ion-item>
                     <ion-label color="dark" position="stacked"><span style="font-size:18px"><strong>Importo</strong></span></ion-label>
-                    <ion-input inputmode="decimal" placeholder="Ex:...50.99"></ion-input>
+                    <ion-input inputmode="decimal" [(ngModel)]="importo" placeholder="Ex:...50.99"></ion-input>
                   </ion-item>
       
             

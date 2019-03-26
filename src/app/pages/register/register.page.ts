@@ -11,7 +11,7 @@ import { AlertController } from '@ionic/angular';
 })
 export class RegisterPage implements OnInit {
   public onRegisterForm: FormGroup;
-  
+
   private nome: string;
   private cognome: string;
   private email: string;
@@ -48,27 +48,27 @@ export class RegisterPage implements OnInit {
 
 /////////////////////////////////////
   async signUp() {
-   
-    if (this.password == this.confermaPassword){
-     
-    this.apiService.registrazione(this.nome,this.cognome,this.email,this.password).then(
-      (result) => { //nel caso in cui va a buon fine la chiamata
-        console.log("UTENTE CREATO: " , this.nome , this.cognome);
+
+    if (this.password == this.confermaPassword) {
+
+    this.apiService.registrazione(this.nome, this.cognome, this.email, this.password).then(
+      (result) => { // nel caso in cui va a buon fine la chiamata
+        console.log('UTENTE CREATO: ' , this.nome , this.cognome);
       },
-      (rej) => {//nel caso non vada a buon fine la chiamata
-        console.log("UTENTE NON CREATO");
-      } 
+      (rej) => {// nel caso non vada a buon fine la chiamata
+        console.log('UTENTE NON CREATO');
+      }
     );
 
-     //DOPO 2000 MS RIPORTA L'UTENTE ALA LOGIN (PRIMA ERA HOME)
+     // DOPO 2000 MS RIPORTA L'UTENTE ALA LOGIN (PRIMA ERA HOME)
     const loader = await this.loadingCtrl.create({
       duration: 2000
     });
     loader.present();
     loader.onWillDismiss().then(() => {
      this.goToLogin();
-    });  
-    }else{
+    });
+    } else {
       this.presentAlert();
       console.log('Passwords non coincidono');
       return;
@@ -80,7 +80,7 @@ export class RegisterPage implements OnInit {
     this.navCtrl.navigateRoot('/');
   }
 
-  async presentAlert() { //Funzione per mostrare a video finestrina che specifica "l'errore"
+  async presentAlert() { // Funzione per mostrare a video finestrina che specifica "l'errore"
     const alert = await this.alertController.create({
       header: 'Password non corrispondenti',
       message: 'Assicurarsi che i campi "Password" e "Conferma Password" coincidino per continuare.',

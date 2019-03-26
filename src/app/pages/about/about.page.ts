@@ -22,7 +22,7 @@ export class AboutPage implements OnInit {
   ngOnInit() {
   }
 
-  goToVisualizzaCategorie(){
+  goToVisualizzaCategorie() {
   }
 
 
