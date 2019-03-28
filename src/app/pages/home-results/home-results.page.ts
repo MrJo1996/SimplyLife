@@ -142,9 +142,6 @@ export class HomeResultsPage {
     this.apiService.getScadenzePerData(this.session.codiceUtente).then(
       (scadenzeData) => {
         this.scadenze_data = scadenzeData
-      
-        console.log('Ho avvalorato.');
-        console.log('in deadLine: ', this.session.codiceUtente);
 
         if (this.scadenze_data[0] = !null) {
           this.proxScad[0] = this.scadenze_data['data']['0'];
