@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController, LoadingController } from '@ionic/angular';
+import { NavController, LoadingController, AlertController } from '@ionic/angular';
 import { ApiService } from 'src/app/providers/api.service';
-import { Data } from '@angular/router';
 import { Sessione } from 'src/app/session/sessione';
 
 @Component({
@@ -17,7 +16,7 @@ export class SettingsPage implements OnInit {
   private data_ricezione: Date;
   private data_scadenza: Date;
   private periodo: number;
-  loadingCtrl: LoadingController;
+  private loadingCtrl: LoadingController;
   lang: any;
   enableNotifications: any;
   paymentMethod: any;
@@ -29,7 +28,10 @@ export class SettingsPage implements OnInit {
   paymentMethods: any = ['Paypal', 'Credit Card'];
   currencies: any = ['USD', 'BRL', 'EUR'];
 
-  constructor(public navCtrl: NavController, public apiService: ApiService, public session: Sessione) { 
+  constructor(public navCtrl: NavController, 
+              public apiService: ApiService, public session: Sessione,
+              public alertController: AlertController) {
+
     this.apiService.getCategorie().then(
       (categorie) => {
         this.categorie = categorie;
@@ -37,38 +39,53 @@ export class SettingsPage implements OnInit {
       (rej) => {
         this.categorie = [];
       }
-    );}
+    );
+  }
 
   ngOnInit() {
   }
 
   async sendData() {
-      console.log(this.nome, this.importo, this.periodo, this.categoria, this.data_ricezione, this.data_scadenza, this.session.codiceUtente);
-      this.apiService.inserisciScadenza(this.nome, this.data_ricezione, this.data_scadenza, this.periodo,
-        this.categoria, this.session.codiceUtente, this.importo).then(
+
+    this.apiService.inserisciScadenza(this.nome, this.data_ricezione, this.data_scadenza, this.periodo,
+      this.categoria, this.session.codiceUtente, this.importo).then(
         (result) => { // nel caso in cui va a buon fine la chiamata
-          console.log('scadenza inserita: ' , this.nome , this.categoria);
+          this.presentAlert();
+          this.goToHome();
+          console.log('scadenza inserita: ', this.nome, this.categoria);
         },
         (rej) => {// nel caso non vada a buon fine la chiamata
           console.log('scadenza non inserita');
+          this.goToHome();
+          this.presentAlertNegativo();
         }
       );
-      /*  // DOPO 2000 MS RIPORTA L'UTENTE ALA LOGIN (PRIMA ERA HOME)
-      const loader = await this.loadingCtrl.create({
-        duration: 2000
-      });
-      loader.present();
-      loader.onWillDismiss().then(() => {
-       this.goToHome();
-      }); */
-    // this.navCtrl.navigateForward('edit-profile');
+   
   }
 
-/*   logout() {
-    this.navCtrl.navigateRoot('/');
-  } */
+
   goToHome() {
-    this.navCtrl.navigateForward('home-results');
+    //this.navCtrl.navigateForward('home-results');
+    this.navCtrl.navigateRoot('/home-results');
+  }
+
+  async presentAlert() { // Funzione per mostrare a video finestrina che specifica "l'errore"
+    const alert = await this.alertController.create({
+      header: 'Scadenza inserita',
+      message: 'Inserimento avvenuto con successo.',
+      buttons: ['OK']
+    });
+
+    await alert.present();
+  }
+
+  async presentAlertNegativo(){
+    const alert = await this.alertController.create({
+      header: 'Scadenza non inserita',
+      message: 'Inserimento non avvenuto, riprovare.',
+      buttons: ['OK']
+    });
+    await alert.present();
   }
 
 }

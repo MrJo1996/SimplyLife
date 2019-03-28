@@ -35,7 +35,7 @@
   <div *ngIf="scadenze_data != null">
     <ion-card class="bg-white">
       <h6>Prossime scadenze:</h6>
-      <div *ngFor="let item of scadenze_data['data']">
+      <div *ngFor="let item of proxScad">
         <ion-item expanded="full">
           <br>
           Nome: {{item.nome}}<br>

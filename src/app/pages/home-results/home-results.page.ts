@@ -30,6 +30,7 @@ export class HomeResultsPage {
 
   private scadenze_data = []; //array che conterrà dati delle prossime X scadenze da stampare
 
+  private proxScad = [1]; //array per la stampa delle prossime scad
 
   constructor(
     public navCtrl: NavController,
@@ -141,13 +142,20 @@ export class HomeResultsPage {
     this.apiService.getScadenzePerData(this.session.codiceUtente).then(
       (scadenzeData) => {
         this.scadenze_data = scadenzeData
-/* 
-        if (this.scadenze_data == undefined) {
-          console.log('OMBO');
-        } */
-
+      
         console.log('Ho avvalorato.');
         console.log('in deadLine: ', this.session.codiceUtente);
+
+        if (this.scadenze_data[0] = !null) {
+          this.proxScad[0] = this.scadenze_data['data']['0'];
+          console.log(this.proxScad[0]);
+
+        }
+        if (this.scadenze_data[1] = ! null) {
+          this.proxScad[1] = this.scadenze_data['data']['1'];
+          console.log(this.proxScad[1]);
+        }
+
       },
       (rej) => {
         this.scadenze_data = []

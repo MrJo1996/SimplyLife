@@ -46,7 +46,8 @@ export class RegisterPage implements OnInit {
     });
   }
 
-/////////////////////////////////////
+  // // // // //
+
   async signUp() {
 
     if (this.password == this.confermaPassword) {
