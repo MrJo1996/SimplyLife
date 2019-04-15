@@ -9,13 +9,16 @@ import { Sessione } from 'src/app/session/sessione';
   styleUrls: ['./settings.page.scss'],
 })
 export class SettingsPage implements OnInit {
+
   private categorie = [];
+
   private nome: string;
   private categoria: number;
   private importo: number;
   private data_ricezione: Date;
   private data_scadenza: Date;
   private periodo: number;
+
   private loadingCtrl: LoadingController;
   lang: any;
   enableNotifications: any;
@@ -62,7 +65,6 @@ export class SettingsPage implements OnInit {
       );
    
   }
-
 
   goToHome() {
     //this.navCtrl.navigateForward('home-results');

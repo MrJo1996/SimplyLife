@@ -15,7 +15,7 @@
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
-  
+
 </ion-header>
 
 <ion-content>
@@ -25,7 +25,9 @@
   </ion-card>
 
   <ion-card class="bg-white">
+
     <ion-img [src]="themeCover"></ion-img>
+
     <ion-button expand="full" color="dark" (click)="presentImage(themeCover)" no-margin>
       <!-- Modal 1: Modal Image -->Ciao, {{nomeUtente}}!
     </ion-button>
@@ -35,20 +37,41 @@
   <div *ngIf="scadenze_data != null">
     <ion-card class="bg-white">
       <h6>Prossime scadenze:</h6>
-      <div *ngFor="let item of proxScad">
+
+      <div *ngIf="proxScad[0] != null">
         <ion-item expanded="full">
           <br>
-          Nome: {{item.nome}}<br>
-          Importo: {{item.importo}}<br>
-          Data Scadenza: {{item.data_scadenza}} <br>
-          Data Ricezione: {{item.data_ricezione}}<br>
-          Periodo: {{item.periodo}}<br>
+          Nome: {{proxScad[0].nome}}<br>
+          Importo: {{proxScad[0].importo}}<br>
+          Data Scadenza: {{proxScad[0].data_scadenza}} <br>
+          Data Ricezione: {{proxScad[0].data_ricezione}}<br>
+          Periodo: {{proxScad[0].periodo}}<br>
           <br>
-          <div *ngIf="item.confermato==0">
+          <div *ngIf="proxScad[0].confermato==0">
             <br> Pagamento: <br>
             <ion-icon name="close-circle-outline"></ion-icon>
           </div>
-          <div *ngIf="item.confermato==1">
+          <div *ngIf="proxScad[0].confermato==1">
+            <br> Pagamento: <br>
+            <ion-icon name="checkmark-circle-outline"></ion-icon>
+          </div>
+        </ion-item>
+      </div>
+
+      <div *ngIf="proxScad[1] != null">
+        <ion-item expanded="full">
+          <br>
+          Nome: {{proxScad[1].nome}}<br>
+          Importo: {{proxScad[1].importo}}<br>
+          Data Scadenza: {{proxScad[1].data_scadenza}} <br>
+          Data Ricezione: {{proxScad[1].data_ricezione}}<br>
+          Periodo: {{proxScad[1].periodo}}<br>
+          <br>
+          <div *ngIf="proxScad[1].confermato==0">
+            <br> Pagamento: <br>
+            <ion-icon name="close-circle-outline"></ion-icon>
+          </div>
+          <div *ngIf="proxScad[1].confermato==1">
             <br> Pagamento: <br>
             <ion-icon name="checkmark-circle-outline"></ion-icon>
           </div>

@@ -30,7 +30,7 @@ export class HomeResultsPage {
 
   private scadenze_data = []; //array che conterrà dati delle prossime X scadenze da stampare
 
-  private proxScad = [1]; //array per la stampa delle prossime scad
+  private proxScad = [1]; //array per la stampa delle prossime scad, per risolvere il problema del for
 
   constructor(
     public navCtrl: NavController,
@@ -121,9 +121,9 @@ export class HomeResultsPage {
   }
 
 
-  // // //
+  // // // // // //
 
-  //Funzione locale che richiama la f definita nel provider. funzione che viene attivata nel momento in cui si schiacci aun bottone
+  //Funzione locale che richiama la f definita nel provider. funzione che viene attivata nel momento in cui si schiaccia un bottone
   getValue() {
     this.apiService.getNomeUtente(this.session.codiceUtente).then(
       (result) => { //nel caso in cui va a buon fine la chiamata avvaloro la variabile locale (che stamperemo) con il risultato della chiamata
@@ -143,12 +143,13 @@ export class HomeResultsPage {
       (scadenzeData) => {
         this.scadenze_data = scadenzeData
 
-        if (this.scadenze_data[0] = !null) {
+        if (this.scadenze_data[0] =! null) {
           this.proxScad[0] = this.scadenze_data['data']['0'];
           console.log(this.proxScad[0]);
 
         }
-        if (this.scadenze_data[1] = ! null) {
+        
+        if (this.scadenze_data[1] =! null) {
           this.proxScad[1] = this.scadenze_data['data']['1'];
           console.log(this.proxScad[1]);
         }

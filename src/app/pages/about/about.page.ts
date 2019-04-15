@@ -12,17 +12,37 @@ import { createElement } from '@angular/core/src/view/element';
   styleUrls: ['./about.page.scss'],
 })
 export class AboutPage implements OnInit {
-  private scadenze = [];
+
+  private scadenze_data = []; //array che conterrà dati delle prossime X scadenze da stampare
+  private categorie = [];
+  private categoria: number;
+
   constructor(
     public navCtrl: NavController,
     public apiService: ApiService,
     public session: Sessione
-  ) { }
-
-  ngOnInit() {
+  ) {
+    this.apiService.getCategorie().then(
+      (categorie) => {
+        this.categorie = categorie;
+      },
+      (rej) => {
+        this.categorie = [];
+      }
+    );
   }
 
+  ngOnInit() {
+    this.visualizzaScadenzePerData();
+  }
+
+
+
+
+  /////
+
   goToVisualizzaCategorie() {
+
   }
 
 
@@ -30,13 +50,13 @@ export class AboutPage implements OnInit {
   visualizzaScadenzePerData() {
     this.apiService.getScadenzePerData(this.session.codiceUtente).then(
       (scadenzeData) => {
-        this.scadenze = scadenzeData,
-        console.log('visualizzato.');
+        this.scadenze_data = scadenzeData['data'],
+          console.log('visualizzato.');
       },
       (rej) => {
-        this.scadenze = [],
-        console.log('REJECT');
+        this.scadenze_data = [],
+          console.log('REJECT');
       }
     );
-    }
+  }
 }
