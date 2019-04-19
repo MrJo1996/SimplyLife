@@ -6,6 +6,8 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 import { Pages } from './interfaces/pages';
 
+import { Sessione } from 'src/app/session/sessione';
+
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -19,7 +21,8 @@ export class AppComponent {
     private platform: Platform,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
-    public navCtrl: NavController
+    public navCtrl: NavController,
+    public session: Sessione
   ) {
     this.appPages = [
       {
@@ -71,6 +74,11 @@ export class AppComponent {
   }
 
   logout() {
+
+    //FARE UN REFRESH AUTOMATICO 
+this.session.setValue(-1);
+
+
     this.navCtrl.navigateRoot('/');
   }
 }

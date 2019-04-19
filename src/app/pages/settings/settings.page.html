@@ -3,7 +3,7 @@
       <ion-buttons slot="start">
         <ion-back-button color='light'></ion-back-button>
       </ion-buttons>
-      <ion-title>  <ion-text color="light"><span style="font-size:22px"><strong> Inserisci scadenza </strong></span></ion-text> </ion-title>
+      <ion-title>  <ion-text color="light"><span style="font-size:22px"><strong> Spese </strong></span></ion-text> </ion-title>
     </ion-toolbar>
   </ion-header>
   
@@ -15,55 +15,16 @@
         <ion-row>
           <ion-col size="12" padding>
   
-            <ion-list margin-bottom>
-            
-  
-              <ion-item>
-                <ion-label color="dark"  position="stacked"><span style="font-size:18px"><strong>Descrizione </strong></span></ion-label>
-                <ion-input inputmode="text" [(ngModel)]="nome" placeholder="Inserisci descrizione" value=""></ion-input>
-              </ion-item>
+           
 
-              <ion-item>
-                  <ion-label color="dark"><span style="font-size:18px"><strong>Categoria</strong></span></ion-label>
-                  <ion-select [(ngModel)]="categoria"> 
-                    <div *ngFor="let item of categorie">
-                    <ion-select-option value="{{item.codice_categoria}}" >{{item.nome_categoria}}</ion-select-option>
-                    </div>
-                  </ion-select>
-              </ion-item>
-      
-              <ion-item>
-                <ion-label color="dark" position="stacked"><span style="font-size:18px"><strong>Data di ricezione</strong></span></ion-label>
-                <ion-input inputmode="text" [(ngModel)]="data_ricezione" placeholder="aaaa-mm-gg" value=""></ion-input>
-              </ion-item>
-      
-              <ion-item>
-                <ion-label color="dark" position="stacked"><span style="font-size:18px"><strong>Data di scadenza</strong></span></ion-label>
-                <ion-input inputmode="text" [(ngModel)]="data_scadenza" placeholder="aaaa-mm-gg"></ion-input>
-              </ion-item>
-
-              <ion-item>
-                  <ion-label color="dark" position="stacked"><span style="font-size:18px"><strong>Periodo</strong></span></ion-label>
-                  <ion-input inputmode="numeric" [(ngModel)]="periodo" placeholder="Numero mesi"></ion-input>
-                </ion-item>
-
-                <ion-item>
-                    <ion-label color="dark" position="stacked"><span style="font-size:18px"><strong>Importo</strong></span></ion-label>
-                    <ion-input inputmode="decimal" [(ngModel)]="importo" placeholder="Ex:...50.99"></ion-input>
-                  </ion-item>
-      
-            
-
-            </ion-list>
-    
           </ion-col>
         </ion-row>
       </ion-grid>
     
-      <div>
-          <ion-button icon-left size="medium" expand="full" shape="round" color="dark" (click)="sendData()" >
-            <ion-icon name="add-circle-outline"></ion-icon>
-            Inserisci
+      <div> <!-- BOTTONE INSERISCI - PRENDE ED INVIA I DATI AL DB -->
+          <ion-button icon-left size="medium" expand="full" shape="round" color="dark" (click)="mostraSpese()" >
+            <ion-icon name="eye"></ion-icon>
+             Mostra Spese
           </ion-button>
         </div>
     </ion-card>

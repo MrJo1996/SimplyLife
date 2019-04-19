@@ -33,16 +33,40 @@
           Data Scadenza: {{item.data_scadenza}} <br>
           Data Ricezione: {{item.data_ricezione}}<br>
           Periodo: {{item.periodo}}<br>
-          <br>
+
+          Codice: {{item.codice_scadenza}}<br>
+         
+          <!-- <br> -->
           <div *ngIf="item.confermato==0">
-            <br> Pagamento: <br>
+            <br> Stato Pagamento: <br>
             <ion-icon name="close-circle-outline"></ion-icon>
           </div>
           <div *ngIf="item.confermato==1">
-            <br> Pagamento: <br>
+            <br> Stato Pagamento: <br>
             <ion-icon name="checkmark-circle-outline"></ion-icon>
           </div>
         </ion-item>
+
+        <ion-button icon-left size="medium" expand="block" shape="round" color="dark" size="small"
+          (click)="modificaApprofondita()">
+          <ion-icon name="create"></ion-icon>
+          Modifica
+        </ion-button>
+
+        <ion-button icon-left size="medium" expand="block" shape="round" color="blue" size="small"
+      
+          (click)="confermaPagamento()">
+          <ion-icon name="checkmark-circle-outline"></ion-icon>
+          Conferma Pagamento
+        </ion-button>
+
+        <ion-button icon-left size="medium" expand="block" shape="round" color="red" size="small"
+          (click)="annullaPagamento()">
+          <ion-icon name="close-circle-outline"></ion-icon>
+          Annulla Pagamento
+        </ion-button>
+
+
       </div>
     </ion-card>
   </div>

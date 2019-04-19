@@ -121,7 +121,7 @@ export class HomeResultsPage {
   }
 
 
-  // // // // // //
+  // // // // // // //
 
   //Funzione locale che richiama la f definita nel provider. funzione che viene attivata nel momento in cui si schiaccia un bottone
   getValue() {

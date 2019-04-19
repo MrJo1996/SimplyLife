@@ -17,6 +17,9 @@ export class AboutPage implements OnInit {
   private categorie = [];
   private categoria: number;
 
+  private cod_scadenza: number; //PREnderà valore
+
+
   constructor(
     public navCtrl: NavController,
     public apiService: ApiService,
@@ -30,16 +33,41 @@ export class AboutPage implements OnInit {
         this.categorie = [];
       }
     );
+
+    //this.cod_scadenza=59; //TEST
   }
 
   ngOnInit() {
     this.visualizzaScadenzePerData();
   }
 
+  modificaApprofondita() {
+    this.navCtrl.navigateRoot('/modifica-scadenza');
+  }
 
+  confermaPagamento() {
+    this.apiService.confermaPagamento(this.cod_scadenza).then(
+      (result) => {
+        console.log("CONFERMATO", this.cod_scadenza);
+      },
+      (rej) => {
+        console.log("NON VA IL CONFERMA",this.cod_scadenza);
+      }
+    );
+  }
 
+  annullaPagamento() {
+    this.apiService.annullaPagamento(this.cod_scadenza).then(
+      (result) => {
+        console.log("ANNULLATO",this.cod_scadenza);
+      },
+      (rej) => {
+        console.log("NON VA L' ANNULLATO",this.cod_scadenza);
+      }
+    );
+  }
 
-  /////
+  ///// // // //
 
   goToVisualizzaCategorie() {
 
