@@ -11,7 +11,7 @@
 
 <ion-content>
   <div>
-    <ion-button icon-left size="medium" expand="full" shape="round" color="dark" (click)="goToVisualizzaCategorie()">
+    <ion-button icon-left size="medium" expand="full" shape="round" color="dark" (click)="VisualizzaCategorie()">
       <ion-icon name="eye"></ion-icon>
       Visualizza scadenze per categoria
     </ion-button>
@@ -22,6 +22,7 @@
     </ion-button>
   </div>
 
+<<<<<<< HEAD
   <div *ngIf="scadenze_data != null">
     <ion-card class="bg-white">
       <h6>Lista Scadenze:</h6>
@@ -69,13 +70,91 @@
 
       </div>
     </ion-card>
+=======
+  <div *ngIf="btn_visualizzaPerData==true">
+    <div *ngIf="scadenze_data != null">
+      <ion-card class="bg-white">
+        <h6>Lista Scadenze:</h6>
+        <div *ngFor="let item of scadenze_data">
+          <ion-item expanded="full">
+            <br>
+            Nome: {{item.nome}}<br>
+            Importo: {{item.importo}}<br>
+            Data Scadenza: {{item.data_scadenza}} <br>
+            Data Ricezione: {{item.data_ricezione}}<br>
+            Periodo: {{item.periodo}}<br>
+            <br>
+            <div *ngIf="item.confermato==0">
+              <br> Pagamento: <br>
+              <ion-icon name="close-circle-outline"></ion-icon>
+            </div>
+            <div *ngIf="item.confermato==1">
+              <br> Pagamento: <br>
+              <ion-icon name="checkmark-circle-outline"></ion-icon>
+            </div>
+          </ion-item>
+        </div>
+      </ion-card>
+    </div>
+  
+    <div *ngIf="scadenze_data == null">
+      <ion-card class="bg-white">
+       <h5> Nessuna scadenza presente.</h5>
+      </ion-card>
+    </div>
+>>>>>>> 561742f54c6d11b0662ecef7584f2e6decb42214
   </div>
 
-
-  <div *ngIf="scadenze_data == null">
-    <ion-card class="bg-white">
-      <h5> Nessuna scadenza presente.</h5>
-    </ion-card>
+  <div *ngIf="btn_visualizzaCategorie==true">
+    <div *ngIf="categorie != null">
+      <br>
+      <ion-item>
+        <ion-label color="dark"><span style="font: size 18;"><strong>Selezionare una categoria</strong></span></ion-label>
+        <ion-select [(ngModel)]="cod_categoria">
+          <div *ngFor="let item of categorie">
+            <ion-select-option value="{{item.codice_categoria}}">
+              {{item.nome_categoria}}
+            </ion-select-option>
+          </div>
+        </ion-select>
+      </ion-item>
+      <ion-button icon-left size="medium" expand="medium" shape="round" color="dark" (click)="visualizzaScadenzePerCategoria()">
+        Visualizza
+      </ion-button>
+    </div>
   </div>
+
+  <div *ngIf="btn_visualizza==true">
+      <div *ngIf="scadenze_categoria != null">
+        <ion-card class="bg-white">
+          <h6>Lista Scadenze:</h6>
+          <div *ngFor="let item of scadenze_categoria">
+            <ion-item expanded="full">
+              <br>
+              Nome: {{item.nome}}<br>
+              Importo: {{item.importo}}<br>
+              Data Scadenza: {{item.data_scadenza}} <br>
+              Data Ricezione: {{item.data_ricezione}}<br>
+              Periodo: {{item.periodo}}<br>
+              <br>
+              <div *ngIf="item.confermato==0">
+                <br> Pagamento: <br>
+                <ion-icon name="close-circle-outline"></ion-icon>
+              </div>
+              <div *ngIf="item.confermato==1">
+                <br> Pagamento: <br>
+                <ion-icon name="checkmark-circle-outline"></ion-icon>
+              </div>
+            </ion-item>
+          </div>
+        </ion-card>
+      </div>
+    
+      <div *ngIf="scadenze_categoria == null">
+        <ion-card class="bg-white">
+         <h5> Nessuna scadenza presente.</h5>
+        </ion-card>
+      </div>
+    </div>
 
 </ion-content>

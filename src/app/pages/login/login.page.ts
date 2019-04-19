@@ -162,6 +162,7 @@ public recuperoEmail: string;
           } else {
             this.check = 0; // ACCESSO NEGATO
             console.log('Sono in data uguale a null, check = ', this.check);
+            //aggiungere alert credenziali errate!
           }
 
         this.goToHome(); // portalo alla home se esistono le credenziali, se check quindi è uguale a 1
