@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController, LoadingController, ToastController } from '@ionic/angular';
+import { ApiService } from 'src/app/providers/api.service';
 
 @Component({
   selector: 'app-modifica-password',
@@ -7,34 +8,31 @@ import { NavController, LoadingController, ToastController } from '@ionic/angula
   styleUrls: ['./modifica-password.page.scss'],
 })
 export class ModificaPasswordPage implements OnInit {
-
+    
+    private mail: string;
+    private nuova_password: string;
+    
     constructor(
       public navCtrl: NavController,
       public loadingCtrl: LoadingController,
-      public toastCtrl: ToastController
+      public toastCtrl: ToastController,
+      private apiService: ApiService
       ) { }
 
     ngOnInit() {
     }
 
-    async sendData() {
-      const loader = await this.loadingCtrl.create({
-        duration: 2000
-      });
-
-      loader.present();
-      loader.onWillDismiss().then(async l => {
-        const toast = await this.toastCtrl.create({
-          showCloseButton: true,
-          cssClass: 'bg-profile',
-          message: 'Dati modificati!',
-          duration: 3000,
-          position: 'bottom'
-        });
-
-        toast.present();
-        this.navCtrl.navigateForward('/home-results');
-      });
+    sendData() {
+      console.log(this.mail, this.nuova_password);
+      this.apiService.modificaPassword(this.mail, this.nuova_password).then(
+      (dati_modificati) => {
+        console.log('dati modificati');
+        //aggiungere alert di avvenuta modifica, tornare alla home
+      },
+      (rej) => {
+        console.log('erroreee');
+      }
+      );
     }
 
   }

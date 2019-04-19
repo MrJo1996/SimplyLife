@@ -15,13 +15,29 @@ export class AboutPage implements OnInit {
 
   private scadenze_data = []; //array che conterrà dati delle prossime X scadenze da stampare
   private categorie = [];
-  private categoria: number;
+  private scadenze_categoria = [];
+  private cod_categoria: number;
+  private btn_visualizzaPerData: boolean;
+  private btn_visualizzaCategorie: boolean;
+  private btn_visualizza: boolean;
 
   constructor(
     public navCtrl: NavController,
     public apiService: ApiService,
     public session: Sessione
   ) {
+  }
+
+  ngOnInit() {
+    this.btn_visualizzaCategorie = false;
+    this.btn_visualizzaPerData = false;
+    this.btn_visualizza = false;
+  }
+
+  VisualizzaCategorie() {
+    this.btn_visualizzaPerData = false;
+    this.btn_visualizza = false;
+    this.btn_visualizzaCategorie = true;
     this.apiService.getCategorie().then(
       (categorie) => {
         this.categorie = categorie;
@@ -32,22 +48,11 @@ export class AboutPage implements OnInit {
     );
   }
 
-  ngOnInit() {
-    this.visualizzaScadenzePerData();
-  }
-
-
-
-
-  /////
-
-  goToVisualizzaCategorie() {
-
-  }
-
-
 
   visualizzaScadenzePerData() {
+    this.btn_visualizzaCategorie = false;
+    this.btn_visualizza = false;
+    this.btn_visualizzaPerData = true;
     this.apiService.getScadenzePerData(this.session.codiceUtente).then(
       (scadenzeData) => {
         this.scadenze_data = scadenzeData['data'],
@@ -59,4 +64,21 @@ export class AboutPage implements OnInit {
       }
     );
   }
+
+  visualizzaScadenzePerCategoria(){
+    this.btn_visualizzaCategorie = false;
+    this.btn_visualizzaPerData = false;
+    this.btn_visualizza = true;
+    this.apiService.getScadenzePerCategoria(this.cod_categoria, this.session.codiceUtente).then(
+      (scadenzeCategoria) => {
+        this.scadenze_categoria = scadenzeCategoria;
+        console.log('scadenze cat', this.scadenze_categoria);
+      },
+      (rej) =>{
+        this.scadenze_categoria = [],
+        console.log('erroreeeeeee');
+      }
+    );
+  }
+
 }
