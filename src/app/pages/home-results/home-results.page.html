@@ -10,31 +10,45 @@
     </ion-title>
     <ion-buttons slot="end">
       <ion-button size="small" shape="round" color="medium" (click)="notifications()">
-        <ion-icon name="notifications"></ion-icon>
-        <ion-badge color="dark" slot="end">2</ion-badge>
+
+        <ion-icon name="information-circle-outline"></ion-icon>
+
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
 
 </ion-header>
 
-<ion-content>
-
-  <ion-card no-margin class="no-radius">
-
-  </ion-card>
-
+<ion-content class="profile">
   <ion-card class="bg-white">
 
-    <ion-img [src]="themeCover"></ion-img>
+      <ion-card-content class="bg-profile">
+          <img src="assets/img/logo.jpg">
+        </ion-card-content>
 
     <ion-button expand="full" color="dark" (click)="presentImage(themeCover)" no-margin>
       <!-- Modal 1: Modal Image -->Ciao, {{nomeUtente}}!
     </ion-button>
+
+
+<!-- NOTIFICHE -->
+<!-- <ion-button expand="block" (click)="scheduleNotification()">Schedule</ion-button>
+  <ion-button expand="block" (click)="recurringNotification()">Every Minute</ion-button>
+  <ion-button expand="block" (click)="repeatingDaily()">Daily</ion-button>
+  <ion-button expand="block" (click)="getAll()">Get All</ion-button>
+  
+  <ion-list>
+    <ion-item *ngFor="let n of scheduled">
+      <ion-label text-wrap>
+        {{ n.id }} - {{ n.title }}
+        <p>Trigger: {{ n.trigger | json }} </p>
+      </ion-label>
+    </ion-item>
+  </ion-list> -->
+  
+  <!-- FINE -->
+
   </ion-card>
-
-   <!-- prova -->
-
 
   <div *ngIf="scadenze_data != null">
     <ion-card class="bg-white">
@@ -85,11 +99,11 @@
 
   <div *ngIf="scadenze_data == null">
     <ion-card class="bg-white">
-      <h5>  Nessuna scadenza presente.</h5>
+      <h5> Nessuna scadenza presente.</h5>
     </ion-card>
   </div>
 
-  
+
 
   <popmenu></popmenu>
 </ion-content>

@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar color="primary">
     <ion-buttons slot="start">
-      <ion-back-button color='light'></ion-back-button>
+        <ion-menu-button color="secondary"></ion-menu-button>
     </ion-buttons>
     <ion-title>
       <ion-text color="light"><span style="font-size:22px"><strong> Visualizza scadenze </strong></span></ion-text>
@@ -10,6 +10,19 @@
 </ion-header>
 
 <ion-content>
+<!-- REFRESHER -->
+    <ion-refresher slot="fixed" 
+    (ionRefresh)="ionRefresh($event)" 
+    (ionPull)="ionPull($event)" 
+    (ionStart)="ionStart($event)">
+      <ion-refresher-content
+        pullingIcon="arrow-dropdown"
+        pullingText="Trascina per aggiornare"
+        refreshingSpinner="circles"
+        refreshingText="Aggiornamento...">
+      </ion-refresher-content>
+    </ion-refresher>
+<!--  -->
   <div>
     <ion-button icon-left size="medium" expand="full" shape="round" color="dark" (click)="VisualizzaCategorie()">
       <ion-icon name="eye"></ion-icon>
@@ -22,55 +35,6 @@
     </ion-button>
   </div>
 
-<<<<<<< HEAD
-  <div *ngIf="scadenze_data != null">
-    <ion-card class="bg-white">
-      <h6>Lista Scadenze:</h6>
-      <div *ngFor="let item of scadenze_data">
-        <ion-item expanded="full">
-          <br>
-          Nome: {{item.nome}}<br>
-          Importo: {{item.importo}}<br>
-          Data Scadenza: {{item.data_scadenza}} <br>
-          Data Ricezione: {{item.data_ricezione}}<br>
-          Periodo: {{item.periodo}}<br>
-
-          Codice: {{item.codice_scadenza}}<br>
-         
-          <!-- <br> -->
-          <div *ngIf="item.confermato==0">
-            <br> Stato Pagamento: <br>
-            <ion-icon name="close-circle-outline"></ion-icon>
-          </div>
-          <div *ngIf="item.confermato==1">
-            <br> Stato Pagamento: <br>
-            <ion-icon name="checkmark-circle-outline"></ion-icon>
-          </div>
-        </ion-item>
-
-        <ion-button icon-left size="medium" expand="block" shape="round" color="dark" size="small"
-          (click)="modificaApprofondita()">
-          <ion-icon name="create"></ion-icon>
-          Modifica
-        </ion-button>
-
-        <ion-button icon-left size="medium" expand="block" shape="round" color="blue" size="small"
-      
-          (click)="confermaPagamento()">
-          <ion-icon name="checkmark-circle-outline"></ion-icon>
-          Conferma Pagamento
-        </ion-button>
-
-        <ion-button icon-left size="medium" expand="block" shape="round" color="red" size="small"
-          (click)="annullaPagamento()">
-          <ion-icon name="close-circle-outline"></ion-icon>
-          Annulla Pagamento
-        </ion-button>
-
-
-      </div>
-    </ion-card>
-=======
   <div *ngIf="btn_visualizzaPerData==true">
     <div *ngIf="scadenze_data != null">
       <ion-card class="bg-white">
@@ -93,6 +57,23 @@
               <ion-icon name="checkmark-circle-outline"></ion-icon>
             </div>
           </ion-item>
+          <ion-button icon-left size="medium" expand="block" shape="round" color="dark" size="small" 
+          (click)="modificaApprofondita(item.codice_scadenza)">
+          <ion-icon name="create"></ion-icon>
+          Modifica
+        </ion-button>
+
+        <ion-button icon-left size="medium" expand="block" shape="round" color="blue" size="small"
+          (click)="confermaPagamento(item.codice_scadenza)">
+          <ion-icon name="checkmark-circle-outline"></ion-icon>
+          Conferma Pagamento
+        </ion-button>
+
+        <ion-button icon-left size="medium" expand="block" shape="round" color="red" size="small"
+          (click)="annullaPagamento(item.codice_scadenza)">
+          <ion-icon name="close-circle-outline"></ion-icon>
+          Annulla Pagamento
+        </ion-button>
         </div>
       </ion-card>
     </div>
@@ -102,7 +83,6 @@
        <h5> Nessuna scadenza presente.</h5>
       </ion-card>
     </div>
->>>>>>> 561742f54c6d11b0662ecef7584f2e6decb42214
   </div>
 
   <div *ngIf="btn_visualizzaCategorie==true">
@@ -146,6 +126,24 @@
                 <ion-icon name="checkmark-circle-outline"></ion-icon>
               </div>
             </ion-item>
+            <ion-button icon-left size="medium" expand="block" shape="round" color="dark" size="small" 
+          (click)="modificaApprofondita(item.codice_scadenza)">
+          <ion-icon name="create"></ion-icon>
+          Modifica
+        </ion-button>
+
+        <ion-button icon-left size="medium" expand="block" shape="round" color="blue" size="small"
+          (click)="confermaPagamento(item.codice_scadenza)">
+          <ion-icon name="checkmark-circle-outline"></ion-icon>
+          Conferma Pagamento
+        </ion-button>
+
+        <ion-button icon-left size="medium" expand="block" shape="round" color="red" size="small"
+          (click)="annullaPagamento(item.codice_scadenza)">
+          <ion-icon name="close-circle-outline"></ion-icon>
+          Annulla Pagamento
+        </ion-button>
+
           </div>
         </ion-card>
       </div>

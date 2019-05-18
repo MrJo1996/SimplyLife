@@ -45,10 +45,10 @@ export class AppComponent {
         icon: 'add-circle-outline'
       },
       {
-        title: 'Spese',
-        url: '/settings',
+        title: 'Supporto',
+        url: '/edit-profile',
         direct: 'forward',
-        icon: 'logo-usd'
+        icon: 'mail'
       },
       {
         title: 'Logout',

@@ -20,16 +20,6 @@ export class SettingsPage implements OnInit {
   private periodo: number;
 
   private loadingCtrl: LoadingController;
-  lang: any;
-  enableNotifications: any;
-  paymentMethod: any;
-  currency: any;
-  enablePromo: any;
-  enableHistory: any;
-
-  languages: any = ['English', 'Portuguese', 'French'];
-  paymentMethods: any = ['Paypal', 'Credit Card'];
-  currencies: any = ['USD', 'BRL', 'EUR'];
 
   constructor(public navCtrl: NavController, 
               public apiService: ApiService, public session: Sessione,
@@ -80,7 +70,7 @@ export class SettingsPage implements OnInit {
 
     await alert.present();
   }
-
+//
   async presentAlertNegativo(){
     const alert = await this.alertController.create({
       header: 'Scadenza non inserita',

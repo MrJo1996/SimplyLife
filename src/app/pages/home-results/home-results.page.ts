@@ -1,11 +1,14 @@
 import { Component } from '@angular/core';
+import { LocalNotifications, ELocalNotificationTriggerUnit, ILocalNotificationActionType, ILocalNotification } from '@ionic-native/local-notifications/ngx'
+
 import {
   NavController,
   AlertController,
   MenuController,
   ToastController,
   PopoverController,
-  ModalController
+  ModalController,
+  Platform
 } from '@ionic/angular';
 
 // Modals
@@ -22,6 +25,8 @@ import { ApiService } from 'src/app/providers/api.service';
   styleUrls: ['./home-results.page.scss']
 })
 export class HomeResultsPage {
+  scheduled = [];
+
   searchKey = '';
   yourLocation = '123 Test Street';
   themeCover = 'assets/img/ionic4-Start-Theme-cover.jpg';
@@ -40,13 +45,80 @@ export class HomeResultsPage {
     public modalCtrl: ModalController,
     public toastCtrl: ToastController,
     public session: Sessione,
-    public apiService: ApiService
+    public apiService: ApiService,
+    private plt: Platform,
+    private localNotifications: LocalNotifications
   ) {
+    this.plt.ready().then(() => {
+      this.localNotifications.on('click').subscribe(res => {
+        let msg = res.data ? res.data.mydata : '';
+        this.showAlert(res.title, res.text, msg);
+      });
 
-    this.getValue(); //Stampa nome Utente loggato
+      this.localNotifications.on('trigger').subscribe(res => {
+        let msg = res.data ? res.data.mydata : '';
+        this.showAlert(res.title, res.text, msg);
+      });
+    });
+    this.getValue(); //Stampa nome Utente loggato..
 
     this.getNextDeadLine(); //Stampa prossime x scadenze
   }
+
+  //add
+  scheduleNotification() {
+    this.localNotifications.schedule({
+      id: 1,
+      title: 'Attention',
+      text: 'Simons Notification',
+      data: { mydata: 'My hidden message this is' },
+      trigger: { in: 5, unit: ELocalNotificationTriggerUnit.SECOND },
+      foreground: true // Show the notification while app is open
+    });
+
+    // Works as well!
+    // this.localNotifications.schedule({
+    //   id: 1,
+    //   title: 'Attention',
+    //   text: 'Simons Notification',
+    //   data: { mydata: 'My hidden message this is' },
+    //   trigger: { at: new Date(new Date().getTime() + 5 * 1000) }
+    // });
+  }
+
+  recurringNotification() {
+    this.localNotifications.schedule({
+      id: 22,
+      title: 'Recurring',
+      text: 'Simons Recurring Notification',
+      trigger: { every: ELocalNotificationTriggerUnit.MINUTE }
+    });
+  }
+
+  repeatingDaily() {
+    this.localNotifications.schedule({
+      id: 42,
+      title: 'Good Morning',
+      text: 'Code something epic today!',
+      trigger: { every: { hour: 9, minute: 30 } }
+    });
+  }
+
+  showAlert(header, sub, msg) {
+    this.alertCtrl.create({
+      header: header,
+      subHeader: sub,
+      message: msg,
+      buttons: ['Ok']
+    }).then(alert => alert.present());
+  }
+
+  getAll() {
+    this.localNotifications.getAll().then((res: ILocalNotification[]) => {
+      this.scheduled = res;
+    })
+  }
+  //fine
 
   ionViewWillEnter() {
     this.menuCtrl.enable(true);
@@ -143,13 +215,13 @@ export class HomeResultsPage {
       (scadenzeData) => {
         this.scadenze_data = scadenzeData
 
-        if (this.scadenze_data[0] =! null) {
+        if (this.scadenze_data[0] = ! null) {
           this.proxScad[0] = this.scadenze_data['data']['0'];
           console.log(this.proxScad[0]);
 
         }
-        
-        if (this.scadenze_data[1] =! null) {
+
+        if (this.scadenze_data[1] = ! null) {
           this.proxScad[1] = this.scadenze_data['data']['1'];
           console.log(this.proxScad[1]);
         }
@@ -162,4 +234,8 @@ export class HomeResultsPage {
       }
     );
   }
+
+
+
+
 }

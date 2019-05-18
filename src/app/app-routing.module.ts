@@ -10,6 +10,7 @@ const routes: Routes = [
   { path: 'home-results', loadChildren: './pages/home-results/home-results.module#HomeResultsPageModule' },
   { path: 'modifica-scadenza', loadChildren: './pages/modifica-scadenza/modifica-scadenza.module#ModificaScadenzaPageModule' },
   { path: 'modifica-password', loadChildren: './pages/modifica-password/modifica-password.module#ModificaPasswordPageModule' }
+
 ];
 
 @NgModule({
