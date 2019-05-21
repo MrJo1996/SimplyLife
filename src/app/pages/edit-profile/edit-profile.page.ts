@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NavController, LoadingController, ToastController, AlertController } from '@ionic/angular';
 
 
+
 @Component({
   selector: 'app-edit-profile',
   templateUrl: './edit-profile.page.html',
@@ -24,19 +25,19 @@ export class EditProfilePage implements OnInit {
   ngOnInit() {
   }
 
-  async sendMail() {
+  /*async sendMail() {
     console.log("Ho inviatooooo");
 //SE NON VA E DA ERRORE CONTROLLARE CORS DISABILITATO IN BROWSER E FARE SWITCH TRA I COMMENTI NEL SETTER
     // using Twilio SendGrid's v3 Node.js Library
     // https://github.com/sendgrid/sendgrid-nodejs
     const sgMail = require('@sendgrid/mail');
-    sgMail.setApiKey( /* process.env.SENDGRID_API_KEY */  this.SENDGRID_API_KEY );
+    sgMail.setApiKey( /!* process.env.SENDGRID_API_KEY *!/  this.SENDGRID_API_KEY );
     const msg = {
       to: 'simplylife19@gmail.com',
       from: this.email,
       subject: this.oggetto,
       text: this.messaggio,
-      /* html: '<strong> </strong>', */
+      /!* html: '<strong> </strong>', *!/
     };
     if (this.email == null || this.oggetto == null || this.messaggio == null) {
       this.presentAlertNegativo();
@@ -45,7 +46,7 @@ export class EditProfilePage implements OnInit {
       this.presentAlert();
       this.navCtrl.navigateRoot('/home-results');
     }
-  }
+  }*/
 
   async presentAlert() { // Funzione per mostrare a video finestrina che specifica "l'errore" o il funzionamento
     const alert = await this.alertController.create({

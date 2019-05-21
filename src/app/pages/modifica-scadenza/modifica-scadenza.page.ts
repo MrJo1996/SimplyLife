@@ -34,7 +34,7 @@ export class ModificaScadenzaPage implements OnInit {
     //prende le categorie da visualizzare per permettere la modifica
     this.apiService.getCategorie().then(
       (categorie) => {
-        this.categorie = categorie;
+        this.categorie.push(categorie);
       },
       (rej) => {
         this.categorie = [];

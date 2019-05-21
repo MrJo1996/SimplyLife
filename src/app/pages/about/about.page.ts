@@ -55,7 +55,7 @@ ionStart(event){
     this.btn_visualizzaCategorie = true;
     this.apiService.getCategorie().then(
       (categorie) => {
-        this.categorie = categorie;
+        this.categorie.push(categorie);
       },
       (rej) => {
         this.categorie = [];
@@ -82,7 +82,7 @@ ionStart(event){
 refresh(){
   this.apiService.getScadenzePerCategoria(this.cod_categoria, this.session.codiceUtente).then(
     (scadenzeCategoria) => {
-      this.scadenze_categoria = scadenzeCategoria;
+      this.scadenze_categoria.push(scadenzeCategoria);
       console.log('scadenze cat', this.scadenze_categoria);
     },
     (rej) =>{
@@ -93,7 +93,7 @@ refresh(){
 
   this.apiService.getScadenzePerData(this.session.codiceUtente).then(
     (scadenzeData) => {
-      this.scadenze_data = scadenzeData['data'],
+      this.scadenze_data.push(scadenzeData['data']);
         console.log('visualizzato.');
     },
     (rej) => {
@@ -110,7 +110,7 @@ refresh(){
     this.btn_visualizza = true;
     this.apiService.getScadenzePerCategoria(this.cod_categoria, this.session.codiceUtente).then(
       (scadenzeCategoria) => {
-        this.scadenze_categoria = scadenzeCategoria;
+        this.scadenze_categoria.push(scadenzeCategoria);
         console.log('scadenze cat', this.scadenze_categoria);
       },
       (rej) =>{

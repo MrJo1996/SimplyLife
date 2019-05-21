@@ -213,7 +213,7 @@ export class HomeResultsPage {
   getNextDeadLine() {
     this.apiService.getScadenzePerData(this.session.codiceUtente).then(
       (scadenzeData) => {
-        this.scadenze_data = scadenzeData
+        this.scadenze_data.push(scadenzeData);
 
         if (this.scadenze_data[0] = ! null) {
           this.proxScad[0] = this.scadenze_data['data']['0'];
