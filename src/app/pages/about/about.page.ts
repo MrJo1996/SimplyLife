@@ -9,7 +9,7 @@ import { Sessione } from 'src/app/session/sessione';
   styleUrls: ['./about.page.scss'],
 })
 export class AboutPage implements OnInit {
- //ciao
+ 
   private scadenze_data = []; //array che conterrà dati delle prossime X scadenze da stampare
   private categorie = [];
   private scadenze_categoria = [];
@@ -119,10 +119,6 @@ refresh(){
     this.cod_scadenza = codice_scadenza;
     this.session.setCodScadenzaTemp(this.cod_scadenza);
     this.navCtrl.navigateRoot('/modifica-scadenza');
-    
-
-    console.log(this.cod_scadenza);
-    
   }
 
   confermaPagamento(codice: number){

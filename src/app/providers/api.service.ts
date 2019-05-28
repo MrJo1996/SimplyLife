@@ -171,7 +171,6 @@ export class ApiService {
       this.http.post('http://simplylifee.altervista.org/logic/SimplyLifeBack-End-master/public/index.php/visualizzascadenzeperdata', body).subscribe(
         (data) => {
           let scadenzeData = data['scadenze'];
-          //console.log('scadenze per data: ', data);
           resolve(scadenzeData);
         },
         (err) => {
