@@ -108,7 +108,7 @@ export class ApiService {
     return new Promise((resolve, reject) => {
       this.http.post('http://simplylifee.altervista.org/logic/SimplyLifeBack-End-master/public/index.php/visualizzascadenzepercategoria', body).subscribe(
         (data) => {
-          let scadenze = data['scadenze'].data;
+          let scadenze = data['scadenze'];
           console.log('scadenze: ', scadenze);
           resolve(scadenze);
         },
@@ -170,8 +170,8 @@ export class ApiService {
     return new Promise((resolve, reject) => {
       this.http.post('http://simplylifee.altervista.org/logic/SimplyLifeBack-End-master/public/index.php/visualizzascadenzeperdata', body).subscribe(
         (data) => {
-          let scadenzeData = data['scadenze: '];
-          console.log('scadenze per data: ', data);
+          let scadenzeData = data['scadenze'];
+          //console.log('scadenze per data: ', data);
           resolve(scadenzeData);
         },
         (err) => {

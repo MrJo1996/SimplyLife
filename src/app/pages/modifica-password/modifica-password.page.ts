@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController, LoadingController, ToastController } from '@ionic/angular';
+import { NavController, LoadingController, ToastController, AlertController } from '@ionic/angular';
 import { ApiService } from 'src/app/providers/api.service';
 
 @Component({
@@ -16,6 +16,7 @@ export class ModificaPasswordPage implements OnInit {
       public navCtrl: NavController,
       public loadingCtrl: LoadingController,
       public toastCtrl: ToastController,
+      public alertController: AlertController,
       private apiService: ApiService
       ) { }
 
@@ -26,14 +27,33 @@ export class ModificaPasswordPage implements OnInit {
       console.log(this.mail, this.nuova_password);
       this.apiService.modificaPassword(this.mail, this.nuova_password).then(
       (dati_modificati) => {
-        console.log('dati modificati');
+        console.log('Dati modificati');
         //aggiungere alert di avvenuta modifica, tornare alla home
-      },
+        this.presentAlert();
       (rej) => {
-        console.log('erroreee');
+        console.log('errore');
+        this.presentAlertNegativo();
       }
       );
     }
+
+    async presentAlert() { // Funzione per mostrare a video finestrina che specifica "l'errore"
+    const alert = await this.alertController.create({
+      header: 'Modifica Effetuata!',
+      message: 'Password cambiata con successo.',
+      buttons: ['OK']
+    });
+    await alert.present();
+  }
+
+  async presentAlertNegativo(){
+    const alert = await this.alertController.create({
+      header: 'Impossibile modificare la password.',
+      message: 'Aggiornamento non avvenuto, riprovare.',
+      buttons: ['OK']
+    });
+    await alert.present();
+  }
 
   }
 

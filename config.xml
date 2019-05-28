@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="com.ionictheme.ionic4start" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>Ionic 4 Start Theme</name>
-    <description>Ionic 4 Start Theme</description>
-    <author email="firminoata@gmail.com" href="https://ionictheme.com">Ionic Theme</author>
+    <name>SimplyLife</name>
+    <description>SimplyLife</description>
+    <author email="simplylife19@gmail.com" href="https://ionictheme.com">SimplyLife</author>
     <content src="index.html" />
     <access origin="*" />
     <allow-intent href="http://*/*" />

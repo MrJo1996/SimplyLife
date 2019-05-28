@@ -44,12 +44,12 @@ export class AppComponent {
         direct: 'forward',
         icon: 'add-circle-outline'
       },
-      {
+      /* {
         title: 'Supporto',
         url: '/edit-profile',
         direct: 'forward',
         icon: 'mail'
-      },
+      }, */
       {
         title: 'Logout',
         url: '/',

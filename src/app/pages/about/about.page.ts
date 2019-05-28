@@ -9,7 +9,7 @@ import { Sessione } from 'src/app/session/sessione';
   styleUrls: ['./about.page.scss'],
 })
 export class AboutPage implements OnInit {
-
+ //ciao
   private scadenze_data = []; //array che conterrà dati delle prossime X scadenze da stampare
   private categorie = [];
   private scadenze_categoria = [];
@@ -25,7 +25,7 @@ export class AboutPage implements OnInit {
     public alertController: AlertController,
     public session: Sessione
   ) {}
-//
+
   ionRefresh(event) {
     console.log('Pull Event Triggered!');
     setTimeout(() => {
@@ -55,7 +55,7 @@ ionStart(event){
     this.btn_visualizzaCategorie = true;
     this.apiService.getCategorie().then(
       (categorie) => {
-        this.categorie.push(categorie);
+        this.categorie = categorie['data'];
       },
       (rej) => {
         this.categorie = [];
@@ -69,12 +69,10 @@ ionStart(event){
     this.btn_visualizzaPerData = true;
     this.apiService.getScadenzePerData(this.session.codiceUtente).then(
       (scadenzeData) => {
-        this.scadenze_data = scadenzeData['data'],
-          console.log('visualizzato.');
+        this.scadenze_data = scadenzeData['data']
       },
       (rej) => {
-        this.scadenze_data = [],
-          console.log('REJECT');
+        this.scadenze_data = []
       }
     );
   }
@@ -82,26 +80,23 @@ ionStart(event){
 refresh(){
   this.apiService.getScadenzePerCategoria(this.cod_categoria, this.session.codiceUtente).then(
     (scadenzeCategoria) => {
-      this.scadenze_categoria.push(scadenzeCategoria);
-      console.log('scadenze cat', this.scadenze_categoria);
+      //this.scadenze_categoria.push(scadenzeCategoria);
+      this.scadenze_categoria = scadenzeCategoria['data'];
     },
     (rej) =>{
-      this.scadenze_categoria = [],
-      console.log('error');
+      this.scadenze_categoria = []
     }
   );
 
   this.apiService.getScadenzePerData(this.session.codiceUtente).then(
     (scadenzeData) => {
-      this.scadenze_data.push(scadenzeData['data']);
+      this.scadenze_data = scadenzeData['data'];
         console.log('visualizzato.');
     },
     (rej) => {
-      this.scadenze_data = [],
-        console.log('REJECT');
+      this.scadenze_data = []
     }
   );
-  console.log("REFRESH FATTO");
 }
 
   visualizzaScadenzePerCategoria(){
@@ -110,7 +105,7 @@ refresh(){
     this.btn_visualizza = true;
     this.apiService.getScadenzePerCategoria(this.cod_categoria, this.session.codiceUtente).then(
       (scadenzeCategoria) => {
-        this.scadenze_categoria.push(scadenzeCategoria);
+        this.scadenze_categoria = scadenzeCategoria['data'];
         console.log('scadenze cat', this.scadenze_categoria);
       },
       (rej) =>{

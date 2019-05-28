@@ -213,24 +213,20 @@ export class HomeResultsPage {
   getNextDeadLine() {
     this.apiService.getScadenzePerData(this.session.codiceUtente).then(
       (scadenzeData) => {
-        this.scadenze_data.push(scadenzeData);
 
-        if (this.scadenze_data[0] = ! null) {
-          this.proxScad[0] = this.scadenze_data['data']['0'];
-          console.log(this.proxScad[0]);
+        this.scadenze_data = scadenzeData['data'].slice(0, 2);
 
+        if (this.scadenze_data[0] != null) {
+          this.proxScad[0] = this.scadenze_data['0'];
         }
 
-        if (this.scadenze_data[1] = ! null) {
-          this.proxScad[1] = this.scadenze_data['data']['1'];
-          console.log(this.proxScad[1]);
+        if (this.scadenze_data[1] != null) {
+          this.proxScad[1] = this.scadenze_data['1'];
         }
 
       },
       (rej) => {
         this.scadenze_data = []
-        console.log('REJECT');
-        console.log('in deadLine: ', this.session.codiceUtente);
       }
     );
   }
