@@ -27,7 +27,7 @@ export class SettingsPage implements OnInit {
 
     this.apiService.getCategorie().then(
       (categorie) => {
-        this.categorie.push(categorie);
+        this.categorie=categorie['data'];
       },
       (rej) => {
         this.categorie = [];

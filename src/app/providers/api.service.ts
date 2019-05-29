@@ -29,7 +29,7 @@ export class ApiService {
     return new  Promise ((resolve, reject) => {
       this.http.get('http://simplylifee.altervista.org/logic/SimplyLifeBack-End-master/public/index.php/visualizzacategoria').subscribe(
         (data) => {
-          let categorie = data['Categorie'].data;
+          let categorie = data['Categorie'];
           console.log('categorie: ', categorie);
           resolve ( categorie );
         },
@@ -104,7 +104,6 @@ export class ApiService {
       cod_categoria,
       cod_utente
     };
-    console.log(cod_categoria, cod_utente);
     return new Promise((resolve, reject) => {
       this.http.post('http://simplylifee.altervista.org/logic/SimplyLifeBack-End-master/public/index.php/visualizzascadenzepercategoria', body).subscribe(
         (data) => {
