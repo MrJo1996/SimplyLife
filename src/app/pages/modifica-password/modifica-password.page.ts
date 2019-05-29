@@ -24,7 +24,7 @@ export class ModificaPasswordPage implements OnInit {
   }
 
   sendData() {
-    console.log(this.mail, this.nuova_password);
+   
     this.apiService.modificaPassword(this.mail, this.nuova_password).then(
       (dati_modificati) => {
         this.presentAlert();

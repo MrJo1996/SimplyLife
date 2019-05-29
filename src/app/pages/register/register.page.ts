@@ -57,7 +57,7 @@ export class RegisterPage implements OnInit {
         console.log('UTENTE CREATO: ' , this.nome , this.cognome);
       },
       (rej) => {// nel caso non vada a buon fine la chiamata
-        console.log('UTENTE NON CREATO');
+       
       }
     );
 
@@ -71,7 +71,7 @@ export class RegisterPage implements OnInit {
     });
     } else {
       this.presentAlert();
-      console.log('Passwords non coincidono');
+     
       return;
     }
 

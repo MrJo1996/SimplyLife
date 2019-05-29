@@ -76,14 +76,6 @@ export class HomeResultsPage {
       foreground: true // Show the notification while app is open
     });
 
-    // Works as well!
-    // this.localNotifications.schedule({
-    //   id: 1,
-    //   title: 'Attention',
-    //   text: 'Simons Notification',
-    //   data: { mydata: 'My hidden message this is' },
-    //   trigger: { at: new Date(new Date().getTime() + 5 * 1000) }
-    // });
   }
 
   recurringNotification() {
@@ -200,11 +192,10 @@ export class HomeResultsPage {
     this.apiService.getNomeUtente(this.session.codiceUtente).then(
       (result) => { //nel caso in cui va a buon fine la chiamata avvaloro la variabile locale (che stamperemo) con il risultato della chiamata
         this.nomeUtente = result['nome'];
-        console.log("NOME UTENTE HOME: ", this.nomeUtente);
-        console.log("CODICE UTENTE PASSATO: ", this.session.codiceUtente);
+       
       },
       (rej) => {//nel caso non vada a buon fine la chiamata
-        console.log("CODICE UTENTE PASSATO: ", this.session.codiceUtente);
+       
         this.nomeUtente = "no connection";
       }
     );

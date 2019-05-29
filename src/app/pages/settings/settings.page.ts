@@ -57,7 +57,7 @@ export class SettingsPage implements OnInit {
   }
 
   goToHome() {
-    //this.navCtrl.navigateForward('home-results');
+   
     this.navCtrl.navigateRoot('/home-results');
   }
 
@@ -70,7 +70,7 @@ export class SettingsPage implements OnInit {
 
     await alert.present();
   }
-//
+
   async presentAlertNegativo(){
     const alert = await this.alertController.create({
       header: 'Scadenza non inserita',

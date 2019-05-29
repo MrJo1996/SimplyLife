@@ -80,7 +80,6 @@ ionStart(event){
 refresh(){
   this.apiService.getScadenzePerCategoria(this.cod_categoria, this.session.codiceUtente).then(
     (scadenzeCategoria) => {
-      //this.scadenze_categoria.push(scadenzeCategoria);
       this.scadenze_categoria = scadenzeCategoria['data'];
     },
     (rej) =>{
