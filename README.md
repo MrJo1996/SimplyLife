@@ -12,4 +12,4 @@ Installing
 $ npm install
 $ ionic serve -l
 
-# SimplyLife  (link a FB page)
+# SimplyLife  
