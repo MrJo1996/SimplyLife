@@ -17,7 +17,7 @@ export class AboutPage implements OnInit {
   private btn_visualizzaPerData: boolean;
   private btn_visualizzaCategorie: boolean;
   private btn_visualizza: boolean;
-  private cod_scadenza: number; //PREnderà valore
+  private cod_scadenza: number; //Prenderà valore
 
   constructor(
     public navCtrl: NavController,
